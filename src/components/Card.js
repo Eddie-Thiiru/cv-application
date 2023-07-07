@@ -1,13 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 
-class Card extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return <div className="Section">Hello</div>;
-  }
-}
+const Card = ({ children }) => {
+  return <div className="card">{children}</div>;
+};
 
 export default Card;

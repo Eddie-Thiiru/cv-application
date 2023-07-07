@@ -42,11 +42,36 @@ class App extends Component {
         <Header />
         <div className="main">
           <form onSubmit={this.onSubmitForm} className="form">
-            <General />
-            <Work />
-            <Education />
-            <Skill />
-            <Summary />
+            <section>
+              <h3>Personal Information</h3>
+              <General />
+            </section>
+            <section>
+              <h3>Work History</h3>
+              <div className="workContainer">
+                <Work />
+              </div>
+              <button type="button" className="workAddBtn">
+                Add Work
+              </button>
+            </section>
+            <section>
+              <h3>Education</h3>
+              <div className="educationContainer">
+                <Education />
+              </div>
+              <button type="submit">Add</button>
+            </section>
+            <section>
+              <h3>Skills</h3>
+              <div className="skillContainer">
+                <Skill />
+              </div>
+              <button type="submit">ADD</button>
+            </section>
+            <section>
+              <Summary />
+            </section>
             <button type="submit" className="submitBtn">
               Submit
             </button>

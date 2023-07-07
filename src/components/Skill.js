@@ -1,17 +1,17 @@
 import React, { Component } from "react";
+import "../styles/Skill.css";
 
 class Skill extends Component {
   render() {
     return (
-      <section className="sectionFour">
-        <h3>Skills</h3>
-        <div className="container">
+      <div className="skill">
+        <div className="wrapper">
           <div>
             <label htmlFor="skillInput"></label>
             <input type="text" id="skillInput"></input>
           </div>
         </div>
-        <div className="container">
+        <div className="wrapper">
           <fieldset>
             <div>
               <label htmlFor="oneStar"></label>
@@ -35,8 +35,7 @@ class Skill extends Component {
             </div>
           </fieldset>
         </div>
-        <button type="submit">ADD</button>
-      </section>
+      </div>
     );
   }
 }

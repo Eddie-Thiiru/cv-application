@@ -1,11 +1,11 @@
 import React, { Component } from "react";
+import "../styles/General.css";
 
 class General extends Component {
   render() {
     return (
-      <section className="sectionOne">
-        <h3>General Information</h3>
-        <div className="container">
+      <div className="general">
+        <div className="wrapper">
           <div>
             <label htmlFor="firstNameInput">First Name</label>
             <input
@@ -25,7 +25,7 @@ class General extends Component {
             ></input>
           </div>
         </div>
-        <div className="container">
+        <div className="wrapper">
           <div>
             <label htmlFor="professionInput">Profession</label>
             <input
@@ -36,7 +36,7 @@ class General extends Component {
             ></input>
           </div>
         </div>
-        <div className="container">
+        <div className="wrapper">
           <div>
             <label htmlFor="cityInput">City</label>
             <input
@@ -65,7 +65,7 @@ class General extends Component {
             ></input>
           </div>
         </div>
-        <div className="container">
+        <div className="wrapper">
           <div>
             <label htmlFor="phoneInput">Phone</label>
             <input
@@ -85,7 +85,7 @@ class General extends Component {
             ></input>
           </div>
         </div>
-      </section>
+      </div>
     );
   }
 }

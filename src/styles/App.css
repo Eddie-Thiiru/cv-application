@@ -18,9 +18,41 @@ body {
 .app {
   padding: 10px;
   display: grid;
+  grid-template-columns: 100px 1fr 100px;
   grid-template-rows: 100px 1fr 100px;
 }
 
-.card {
+.header {
+  grid-column: 2 / 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main {
+  grid-column: 2 / 3;
+}
+
+.footer {
+  grid-column: 2 / 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  display: grid;
+}
+
+section {
+  min-height: 200px;
   padding: 10px;
+}
+
+.workContainer,
+.educationContainer,
+.skillContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }

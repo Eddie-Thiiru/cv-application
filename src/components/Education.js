@@ -1,11 +1,11 @@
 import React, { Component } from "react";
+import "../styles/Education.css";
 
 class Education extends Component {
   render() {
     return (
-      <section className="sectionThree">
-        <h3>Education</h3>
-        <div className="container">
+      <div className="education">
+        <div className="wrapper">
           <div>
             <label htmlFor="schoolNameInput">School Name</label>
             <input
@@ -15,7 +15,7 @@ class Education extends Component {
             ></input>
           </div>
         </div>
-        <div className="container">
+        <div className="wrapper">
           <div>
             <label htmlFor="degreeInput">Degree</label>
             <input
@@ -33,7 +33,7 @@ class Education extends Component {
             ></input>
           </div>
         </div>
-        <div className="container">
+        <div className="wrapper">
           <div>
             <label htmlFor="schoolStartInput">Start Date</label>
             <input type="date" id="schoolStartInput"></input>
@@ -43,8 +43,7 @@ class Education extends Component {
             <input type="date" id="schoolEndInput"></input>
           </div>
         </div>
-        <button type="submit">Add</button>
-      </section>
+      </div>
     );
   }
 }

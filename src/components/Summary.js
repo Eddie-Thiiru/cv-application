@@ -1,18 +1,19 @@
 import React, { Component } from "react";
+import "../styles/Summary.css";
 
 class Summary extends Component {
   render() {
     return (
-      <section className="sectionFive">
+      <div className="summary">
         <h3>Professional Summary</h3>
-        <div className="container">
+        <div>
           <label htmlFor="summaryInput"></label>
           <textarea
             id="summaryInput"
             placeholder="Write your summary here."
           ></textarea>
         </div>
-      </section>
+      </div>
     );
   }
 }

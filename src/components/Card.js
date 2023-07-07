@@ -1,7 +1,7 @@
 import React from "react";
 
 const Card = ({ children }) => {
-  return <div className="card">{children}</div>;
+  return <section className="card">{children}</section>;
 };
 
 export default Card;

@@ -1,0 +1,26 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  font-size: 1rem;
+}
+
+#root,
+.app {
+  height: 100%;
+  width: 100%;
+}
+
+.app {
+  padding: 10px;
+  display: grid;
+  grid-template-rows: 100px repeat(5, 250px) 100px;
+}
+
+.card {
+  padding: 10px;
+}

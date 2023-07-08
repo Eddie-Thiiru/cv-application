@@ -12,13 +12,6 @@ class Form extends Component {
     super(props);
 
     this.state = {
-      work: {
-        job: {
-          text: "",
-          id: uniqid(),
-        },
-        data: [],
-      },
       workCount: [{ test1: "1" }],
       educationCount: [{ test1: "1" }],
       skillCount: [{ test1: "1" }],

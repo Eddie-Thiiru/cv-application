@@ -1,22 +1,6 @@
 import React, { Component } from "react";
 import "../styles/Work.css";
 
-// const Button = ({ action, onButtonClicked }) => {
-//   if (action.new === false) {
-//     return (
-//       <button type="button" className="workAddBtn" onClick={onButtonClicked}>
-//         Add Work
-//       </button>
-//     );
-//   } else {
-//     return (
-//       <button type="button" className="workDelBtn" onClick={onButtonClicked}>
-//         Delete
-//       </button>
-//     );
-//   }
-// };
-
 class Work extends Component {
   constructor() {
     super();
@@ -33,7 +17,7 @@ class Work extends Component {
   };
 
   render() {
-    const { rmWorkBtnClicked } = this.props;
+    const { key, rmWorkBtnClicked } = this.props;
 
     return (
       <div className="work">
@@ -74,7 +58,12 @@ class Work extends Component {
             ></textarea>
           </div>
         </div>
-        <button type="button" className="delWork" onClick={rmWorkBtnClicked}>
+        <button
+          type="button"
+          id={key}
+          className="delWork"
+          onClick={rmWorkBtnClicked}
+        >
           DELETE
         </button>
       </div>

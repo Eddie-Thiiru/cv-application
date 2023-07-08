@@ -5,12 +5,20 @@ import Work from "./Work";
 import Skill from "./Skill";
 import Summary from "./Summary";
 import "../styles/Form.css";
+import uniqid from "uniqid";
 
 class Form extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      work: {
+        job: {
+          text: "",
+          id: uniqid(),
+        },
+        data: [],
+      },
       workCount: [{ test1: "1" }],
       educationCount: [{ test1: "1" }],
       skillCount: [{ test1: "1" }],
@@ -22,6 +30,9 @@ class Form extends Component {
   addWork = () => {
     this.setState({
       workCount: this.state.workCount.concat([{ test2: "2" }]),
+      work: {
+        job: {},
+      },
     });
   };
 
@@ -37,8 +48,12 @@ class Form extends Component {
     });
   };
 
-  removeWork = () => {
-    console.log("remove work");
+  removeWork = (e) => {
+    this.setState({
+      work: this.work.filter((item) => {
+        return item.id !== e.target.id;
+      }),
+    });
   };
 
   render() {

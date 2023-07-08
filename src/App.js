@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import General from "./components/General";
-import Education from "./components/Education";
-import Work from "./components/Work";
-import Skill from "./components/Skill";
-import Summary from "./components/Summary";
+import Form from "./components/Form";
 import "./styles/App.css";
 
 class App extends Component {
@@ -14,7 +10,10 @@ class App extends Component {
 
     this.state = {
       data: [],
+      form: "empty",
     };
+
+    this.onSubmitForm = this.onSubmitForm.bind(this);
   }
 
   onSubmitForm = (e) => {
@@ -31,52 +30,20 @@ class App extends Component {
 
     this.setState({
       data: this.state.data.concat(array),
+      form: "submitted",
     });
   };
 
   render() {
-    const { inputData, formData } = this.state;
+    const { data, form } = this.state;
+
+    let content =
+      form === "empty" ? <Form onSubmit={this.onSubmitForm} /> : "YEAH";
 
     return (
       <div className="app">
         <Header />
-        <div className="main">
-          <form onSubmit={this.onSubmitForm} className="form">
-            <section>
-              <h3>Personal Information</h3>
-              <General />
-            </section>
-            <section>
-              <h3>Work History</h3>
-              <div className="workContainer">
-                <Work />
-              </div>
-              <button type="button" className="workAddBtn">
-                Add Work
-              </button>
-            </section>
-            <section>
-              <h3>Education</h3>
-              <div className="educationContainer">
-                <Education />
-              </div>
-              <button type="submit">Add</button>
-            </section>
-            <section>
-              <h3>Skills</h3>
-              <div className="skillContainer">
-                <Skill />
-              </div>
-              <button type="submit">ADD</button>
-            </section>
-            <section>
-              <Summary />
-            </section>
-            <button type="submit" className="submitBtn">
-              Submit
-            </button>
-          </form>
-        </div>
+        <div className="main">{content}</div>
         <Footer />
       </div>
     );

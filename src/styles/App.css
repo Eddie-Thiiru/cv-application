@@ -39,20 +39,3 @@ body {
   justify-content: center;
   align-items: center;
 }
-
-.form {
-  display: grid;
-}
-
-section {
-  min-height: 200px;
-  padding: 10px;
-}
-
-.workContainer,
-.educationContainer,
-.skillContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}

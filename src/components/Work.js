@@ -33,6 +33,8 @@ class Work extends Component {
   };
 
   render() {
+    const { rmWorkBtnClicked } = this.props;
+
     return (
       <div className="work">
         <div className="wrapper">
@@ -72,6 +74,9 @@ class Work extends Component {
             ></textarea>
           </div>
         </div>
+        <button type="button" className="delWork" onClick={rmWorkBtnClicked}>
+          DELETE
+        </button>
       </div>
     );
   }

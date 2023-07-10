@@ -12,51 +12,87 @@ class Form extends Component {
     super(props);
 
     this.state = {
-      workCount: [{ test1: "1" }],
-      educationCount: [{ test1: "1" }],
-      skillCount: [{ test1: "1" }],
+      work: {
+        items: [{ item: "work", id: uniqid() }],
+      },
+      education: {
+        items: [{ item: "education", id: uniqid() }],
+      },
+      skill: {
+        items: [{ item: "skill", id: uniqid() }],
+      },
     };
 
     this.removeWork = this.removeWork.bind(this);
+
+    this.removeEducation = this.removeEducation.bind(this);
+
+    this.removeSkill = this.removeSkill.bind(this);
   }
 
   addWork = () => {
+    let newItem = { item: "work", id: uniqid() };
+
     this.setState({
-      workCount: this.state.workCount.concat([{ test2: "2" }]),
       work: {
-        job: {},
+        items: this.state.work.items.concat(newItem),
       },
     });
   };
 
   addEducation = () => {
+    let newItem = { item: "education", id: uniqid() };
+
     this.setState({
-      educationCount: this.state.educationCount.concat([{ test2: "2" }]),
+      education: {
+        items: this.state.education.items.concat(newItem),
+      },
     });
   };
 
   addSkill = () => {
+    let newItem = { item: "education", id: uniqid() };
+
     this.setState({
-      skillCount: this.state.skillCount.concat([{ test2: "2" }]),
+      skill: {
+        items: this.state.skill.items.concat(newItem),
+      },
     });
   };
 
   removeWork = (e) => {
     this.setState({
-      work: this.work.filter((item) => {
-        return item.id !== e.target.id;
-      }),
+      work: {
+        items: this.state.work.items.filter((item) => {
+          return item.id !== e.target.id;
+        }),
+      },
+    });
+  };
+
+  removeEducation = (e) => {
+    this.setState({
+      education: {
+        items: this.state.education.items.filter((item) => {
+          return item.id !== e.target.id;
+        }),
+      },
+    });
+  };
+
+  removeSkill = (e) => {
+    this.setState({
+      skill: {
+        items: this.state.skill.items.filter((item) => {
+          return item.id !== e.target.id;
+        }),
+      },
     });
   };
 
   render() {
     const { onSubmitForm } = this.props;
-
-    const workList = [];
-
-    for (let i = 0; i < this.state.workCount; i++) {
-      workList.concat(<Work />);
-    }
+    const { work, education, skill } = this.state;
 
     return (
       <form onSubmit={onSubmitForm} className="form">
@@ -67,8 +103,12 @@ class Form extends Component {
         <section>
           <h3>Work History</h3>
           <div className="workContainer">
-            {this.state.workCount.map((item, index) => (
-              <Work key={index} rmWorkBtnClicked={this.removeWork}></Work>
+            {work.items.map((item) => (
+              <Work
+                key={item.id}
+                workId={item.id}
+                rmWorkBtnClicked={this.removeWork}
+              />
             ))}
           </div>
           <button type="button" className="workAddBtn" onClick={this.addWork}>
@@ -78,8 +118,12 @@ class Form extends Component {
         <section>
           <h3>Education</h3>
           <div className="educationContainer">
-            {this.state.educationCount.map((item, index) => (
-              <Education key={index}></Education>
+            {education.items.map((item) => (
+              <Education
+                key={item.id}
+                educationId={item.id}
+                rmEducationBtnClicked={this.removeEducation}
+              />
             ))}
           </div>
           <button
@@ -93,8 +137,12 @@ class Form extends Component {
         <section>
           <h3>Skills</h3>
           <div className="skillContainer">
-            {this.state.skillCount.map((item, index) => (
-              <Skill key={index}></Skill>
+            {skill.items.map((item) => (
+              <Skill
+                key={item.id}
+                skillId={item.id}
+                rmSkillBtnClicked={this.removeSkill}
+              />
             ))}
           </div>
           <button type="button" className="skillAddBtn" onClick={this.addSkill}>

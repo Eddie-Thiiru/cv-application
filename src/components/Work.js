@@ -62,7 +62,7 @@ class Work extends Component {
 
   render() {
     const { job, employer, start, end, description } = this.state;
-    const { rmWorkBtnClicked } = this.props;
+    const { workId, rmWorkBtnClicked } = this.props;
 
     return (
       <div className="work">
@@ -124,7 +124,12 @@ class Work extends Component {
             />
           </div>
         </div>
-        <button type="button" className="delWork" onClick={rmWorkBtnClicked}>
+        <button
+          onClick={rmWorkBtnClicked}
+          type="button"
+          className="delWork"
+          id={workId}
+        >
           DELETE
         </button>
       </div>

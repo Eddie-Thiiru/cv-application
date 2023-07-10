@@ -6,9 +6,8 @@ class Skill extends Component {
     super(props);
 
     this.state = {
-      skill: {
-        text: "",
-      },
+      skill: { text: "" },
+      level: { text: "" },
     };
   }
 
@@ -20,8 +19,17 @@ class Skill extends Component {
     });
   };
 
+  handleLevelChange = (e) => {
+    this.setState({
+      level: {
+        text: e.target.value,
+      },
+    });
+  };
+
   render() {
     const { skill } = this.state;
+    const { skillId, rmSkillBtnClicked } = this.props;
 
     return (
       <div className="skill">
@@ -38,55 +46,20 @@ class Skill extends Component {
           </div>
         </div>
         <div className="wrapper">
-          <fieldset>
-            <div>
-              <label htmlFor="oneStar" />
-              <input
-                type="radio"
-                id="starOne"
-                defaultValue="novice"
-                name="star"
-              />
-            </div>
-            <div>
-              <label htmlFor="twoStar" />
-              <input
-                type="radio"
-                id="starTwo"
-                defaultValue="intermediate"
-                name="star"
-              />
-            </div>
-            <div>
-              <label htmlFor="threeStar" />
-              <input
-                type="radio"
-                id="starThree"
-                defaultValue="advanced"
-                name="star"
-              />
-            </div>
-            <div>
-              <label htmlFor="fourStar" />
-              <input
-                type="radio"
-                id="starFour"
-                defaultValue="superior"
-                name="star"
-              />
-            </div>
-            <div>
-              <label htmlFor="fiveStar" />
-              <input
-                type="radio"
-                id="starFive"
-                defaultValue="expert"
-                name="star"
-              />
-            </div>
-          </fieldset>
+          <label htmlFor="level">Skill Level</label>
+          <select id="level" name="level" onChange={this.handleLevelChange}>
+            <option defaultValue="novice">Novice</option>
+            <option defaultValue="intermediate">Intermediate</option>
+            <option defaultValue="advanced">Advanced</option>
+            <option defaultValue="expert">Expert</option>
+          </select>
         </div>
-        <button type="button" className="delSkill">
+        <button
+          onClick={rmSkillBtnClicked}
+          type="button"
+          className="delSkill"
+          id={skillId}
+        >
           DELETE
         </button>
       </div>

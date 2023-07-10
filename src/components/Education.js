@@ -46,6 +46,8 @@ class Education extends Component {
 
   render() {
     const { school, degree, field, start, end } = this.state;
+    const { educationId, rmEducationBtnClicked } = this.props;
+
     return (
       <div className="education">
         <div className="wrapper">
@@ -107,7 +109,12 @@ class Education extends Component {
             />
           </div>
         </div>
-        <button type="button" className="delEducation">
+        <button
+          onClick={rmEducationBtnClicked}
+          type="button"
+          className="delEducation"
+          id={educationId}
+        >
           DELETE
         </button>
       </div>

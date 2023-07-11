@@ -11,7 +11,8 @@ class General extends Component {
       profession: { text: "" },
       city: { text: "" },
       country: { text: "" },
-      postal: { text: "" },
+      address: { text: "" },
+      postcode: { text: "" },
       phone: { text: "" },
       email: { text: "" },
     };
@@ -57,9 +58,17 @@ class General extends Component {
     });
   };
 
-  handlePostalChange = (e) => {
+  handleAddressChange = (e) => {
     this.setState({
-      postal: {
+      address: {
+        text: e.target.value,
+      },
+    });
+  };
+
+  handleCodeChange = (e) => {
+    this.setState({
+      postcode: {
         text: e.target.value,
       },
     });
@@ -88,7 +97,8 @@ class General extends Component {
       profession,
       city,
       country,
-      postal,
+      address,
+      postcode,
       phone,
       email,
     } = this.state;
@@ -134,6 +144,19 @@ class General extends Component {
         </div>
         <div className="wrapper">
           <div>
+            <label htmlFor="postalInput">Postal Address</label>
+            <input
+              onChange={this.handleAddressChange}
+              defaultValue={address.text}
+              type="number"
+              id="postalAddressInput"
+              name="postalAddress"
+              placeholder="e.g. 72186"
+            />
+          </div>
+        </div>
+        <div className="wrapper">
+          <div>
             <label htmlFor="cityInput">City</label>
             <input
               onChange={this.handleCityChange}
@@ -156,14 +179,14 @@ class General extends Component {
             />
           </div>
           <div>
-            <label htmlFor="postalInput">Postal Code</label>
+            <label htmlFor="postalInput">Postcode</label>
             <input
-              onChange={this.handlePostalChange}
-              defaultValue={postal.text}
+              onChange={this.handleCodeChange}
+              defaultValue={postcode.text}
               type="number"
-              id="postalInput"
-              name="postalCode"
-              placeholder="e.g. 43118"
+              id="postalCodeInput"
+              name="postcode"
+              placeholder="e.g. 00200"
             />
           </div>
         </div>
@@ -176,11 +199,11 @@ class General extends Component {
               type="tel"
               id="phoneInput"
               name="phone"
-              placeholder="e.g. +254 700000000"
+              placeholder="e.g. +254700000000"
             />
           </div>
           <div>
-            <label htmlFor="emailInput">Email</label>
+            <label htmlFor="emailInput">Email Address</label>
             <input
               onChange={this.handleEmailChange}
               defaultValue={email.text}

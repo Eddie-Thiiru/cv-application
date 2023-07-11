@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Form from "./components/Form";
+import Overview from "./components/Overview";
 import "./styles/App.css";
 
 class App extends Component {
@@ -14,6 +15,8 @@ class App extends Component {
     };
 
     this.onSubmitForm = this.onSubmitForm.bind(this);
+
+    this.editCV = this.editCV.bind(this);
   }
 
   onSubmitForm = (e) => {
@@ -34,11 +37,19 @@ class App extends Component {
     });
   };
 
+  editCV = (e) => {
+    console.log("edit");
+  };
+
   render() {
     const { data, form } = this.state;
 
     let content =
-      form === "empty" ? <Form onSubmit={this.onSubmitForm} /> : "YEAH";
+      form === "empty" ? (
+        <Form onSubmitCV={this.onSubmitForm} />
+      ) : (
+        <Overview formData={data} edit={this.editCV} />
+      );
 
     return (
       <div className="app">

@@ -95,7 +95,7 @@ class Education extends Component {
               defaultValue={start.text}
               type="date"
               id="schoolStartInput"
-              name="start"
+              name="schoolStartDate"
             />
           </div>
           <div>
@@ -105,7 +105,7 @@ class Education extends Component {
               defaultValue={end.text}
               type="date"
               id="schoolEndInput"
-              name="end"
+              name="schoolEndDate"
             />
           </div>
         </div>

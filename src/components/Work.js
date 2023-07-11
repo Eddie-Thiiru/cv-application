@@ -98,7 +98,7 @@ class Work extends Component {
               defaultValue={start.text}
               type="date"
               id="workStartInput"
-              name="startDate"
+              name="workStartDate"
             />
           </div>
           <div>
@@ -108,7 +108,7 @@ class Work extends Component {
               defaultValue={end.text}
               type="date"
               id="workEndInput"
-              name="endDate"
+              name="workEndDate"
             />
           </div>
         </div>
@@ -119,7 +119,7 @@ class Work extends Component {
               onChange={this.handleDescriptionChange}
               defaultValue={description.text}
               id="descriptionInput"
-              name="description"
+              name="workDescription"
               placeholder="Type your achievements and responsibilities here."
             />
           </div>

@@ -91,11 +91,11 @@ class Form extends Component {
   };
 
   render() {
-    const { onSubmitForm } = this.props;
+    const { onSubmitCV } = this.props;
     const { work, education, skill } = this.state;
 
     return (
-      <form onSubmit={onSubmitForm} className="form">
+      <form onSubmit={onSubmitCV} className="form">
         <section>
           <h3>Personal Information</h3>
           <General />

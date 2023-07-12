@@ -91,23 +91,40 @@ class Form extends Component {
   };
 
   render() {
-    const { onSubmitCV } = this.props;
+    const {
+      generalSection,
+      workSection,
+      educationSection,
+      skillSection,
+      summarySection,
+      inputGeneralChange,
+      inputWorkChange,
+      inputEducationChange,
+      inputSkillChange,
+      inputSummaryChange,
+      onSubmitCV,
+    } = this.props;
     const { work, education, skill } = this.state;
 
     return (
       <form onSubmit={onSubmitCV} className="form">
         <section>
           <h3>Personal Information</h3>
-          <General />
+          <General
+            general={generalSection}
+            onInputChange={inputGeneralChange}
+          />
         </section>
         <section>
           <h3>Work History</h3>
           <div className="workContainer">
             {work.items.map((item) => (
               <Work
+                work={workSection}
                 key={item.id}
                 workId={item.id}
                 rmWorkBtnClicked={this.removeWork}
+                onInputChange={inputWorkChange}
               />
             ))}
           </div>
@@ -120,9 +137,11 @@ class Form extends Component {
           <div className="educationContainer">
             {education.items.map((item) => (
               <Education
+                education={educationSection}
                 key={item.id}
                 educationId={item.id}
                 rmEducationBtnClicked={this.removeEducation}
+                onInputChange={inputEducationChange}
               />
             ))}
           </div>
@@ -139,9 +158,11 @@ class Form extends Component {
           <div className="skillContainer">
             {skill.items.map((item) => (
               <Skill
+                skills={skillSection}
                 key={item.id}
                 skillId={item.id}
                 rmSkillBtnClicked={this.removeSkill}
+                onInputChange={inputSkillChange}
               />
             ))}
           </div>
@@ -150,7 +171,10 @@ class Form extends Component {
           </button>
         </section>
         <section>
-          <Summary />
+          <Summary
+            summary={summarySection}
+            onInputChange={inputSummaryChange}
+          />
         </section>
         <button type="submit" className="submitBtn">
           Submit

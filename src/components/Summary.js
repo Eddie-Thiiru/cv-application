@@ -4,24 +4,10 @@ import "../styles/Summary.css";
 class Summary extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      summary: {
-        text: "",
-      },
-    };
   }
 
-  handleSummaryChange = (e) => {
-    this.setState({
-      summary: {
-        text: e.target.value,
-      },
-    });
-  };
-
   render() {
-    const { summary } = this.state;
+    const { summary, onInputChange } = this.props;
 
     return (
       <div className="summary">
@@ -29,7 +15,7 @@ class Summary extends Component {
         <div>
           <label htmlFor="summaryInput" />
           <textarea
-            onChange={this.handleSummaryChange}
+            onChange={onInputChange}
             defaultValue={summary.text}
             id="summaryInput"
             name="summary"

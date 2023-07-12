@@ -4,49 +4,12 @@ import "../styles/Education.css";
 class Education extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      school: { text: "" },
-      degree: { text: "" },
-      field: { text: "" },
-      start: { text: "" },
-      end: { text: "" },
-    };
   }
 
-  handleSchoolChange = (e) => {
-    this.setState({
-      school: { text: e.target.value },
-    });
-  };
-
-  handleDegreeChange = (e) => {
-    this.setState({
-      degree: { text: e.target.value },
-    });
-  };
-
-  handleFieldChange = (e) => {
-    this.setState({
-      field: { text: e.target.value },
-    });
-  };
-
-  handleStartChange = (e) => {
-    this.setState({
-      start: { text: e.target.value },
-    });
-  };
-
-  handleEndChange = (e) => {
-    this.setState({
-      end: { text: e.target.value },
-    });
-  };
-
   render() {
-    const { school, degree, field, start, end } = this.state;
-    const { educationId, rmEducationBtnClicked } = this.props;
+    const { education, educationId, rmEducationBtnClicked, onInputChange } =
+      this.props;
+    const { school, degree, field, schoolStartDate, schoolEndDate } = education;
 
     return (
       <div className="education">
@@ -54,7 +17,7 @@ class Education extends Component {
           <div>
             <label htmlFor="schoolNameInput">School Name</label>
             <input
-              onChange={this.handleSchoolChange}
+              onChange={onInputChange}
               defaultValue={school.text}
               type="text"
               id="schoolNameInput"
@@ -67,7 +30,7 @@ class Education extends Component {
           <div>
             <label htmlFor="degreeInput">Degree</label>
             <input
-              onChange={this.handleDegreeChange}
+              onChange={onInputChange}
               defaultValue={degree.text}
               type="text"
               id="degreeInput"
@@ -78,7 +41,7 @@ class Education extends Component {
           <div>
             <label htmlFor="studyFieldInput">Field of Study</label>
             <input
-              onChange={this.handleFieldChange}
+              onChange={onInputChange}
               defaultValue={field.text}
               type="text"
               id="studyFieldInput"
@@ -91,8 +54,8 @@ class Education extends Component {
           <div>
             <label htmlFor="schoolStartInput">Start Date</label>
             <input
-              onChange={this.handleStartChange}
-              defaultValue={start.text}
+              onChange={onInputChange}
+              defaultValue={schoolStartDate.text}
               type="date"
               id="schoolStartInput"
               name="schoolStartDate"
@@ -101,8 +64,8 @@ class Education extends Component {
           <div>
             <label htmlFor="schoolEndInput">End Date</label>
             <input
-              onChange={this.handleEndChange}
-              defaultValue={end.text}
+              onChange={onInputChange}
+              defaultValue={schoolEndDate.text}
               type="date"
               id="schoolEndInput"
               name="schoolEndDate"

@@ -4,96 +4,13 @@ import "../styles/General.css";
 class General extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      firstName: { text: "" },
-      surName: { text: "" },
-      profession: { text: "" },
-      city: { text: "" },
-      country: { text: "" },
-      address: { text: "" },
-      postcode: { text: "" },
-      phone: { text: "" },
-      email: { text: "" },
-    };
   }
 
-  handleFirstNameChange = (e) => {
-    this.setState({
-      firstName: {
-        text: e.target.value,
-      },
-    });
-  };
-
-  handleSurNameChange = (e) => {
-    this.setState({
-      surName: {
-        text: e.target.value,
-      },
-    });
-  };
-
-  handleProfessionChange = (e) => {
-    this.setState({
-      profession: {
-        text: e.target.value,
-      },
-    });
-  };
-
-  handleCityChange = (e) => {
-    this.setState({
-      city: {
-        text: e.target.value,
-      },
-    });
-  };
-
-  handleCountryChange = (e) => {
-    this.setState({
-      country: {
-        text: e.target.value,
-      },
-    });
-  };
-
-  handleAddressChange = (e) => {
-    this.setState({
-      address: {
-        text: e.target.value,
-      },
-    });
-  };
-
-  handleCodeChange = (e) => {
-    this.setState({
-      postcode: {
-        text: e.target.value,
-      },
-    });
-  };
-
-  handlePhoneChange = (e) => {
-    this.setState({
-      phone: {
-        text: e.target.value,
-      },
-    });
-  };
-
-  handleEmailChange = (e) => {
-    this.setState({
-      email: {
-        text: e.target.value,
-      },
-    });
-  };
-
   render() {
+    const { general, onInputChange } = this.props;
     const {
       firstName,
-      surName,
+      surname,
       profession,
       city,
       country,
@@ -101,7 +18,7 @@ class General extends Component {
       postcode,
       phone,
       email,
-    } = this.state;
+    } = general;
 
     return (
       <div className="general">
@@ -109,7 +26,7 @@ class General extends Component {
           <div>
             <label htmlFor="firstNameInput">First Name</label>
             <input
-              onChange={this.handleFirstNameChange}
+              onChange={onInputChange}
               defaultValue={firstName.text}
               type="text"
               id="firstNameInput"
@@ -120,8 +37,8 @@ class General extends Component {
           <div>
             <label htmlFor="surnameInput">Surname</label>
             <input
-              onChange={this.handleSurNameChange}
-              defaultValue={surName.text}
+              onChange={onInputChange}
+              defaultValue={surname.text}
               type="text"
               id="surnameInput"
               name="surname"
@@ -133,7 +50,7 @@ class General extends Component {
           <div>
             <label htmlFor="professionInput">Profession</label>
             <input
-              onChange={this.handleProfessionChange}
+              onChange={onInputChange}
               defaultValue={profession.text}
               type="text"
               id="professionInput"
@@ -146,11 +63,11 @@ class General extends Component {
           <div>
             <label htmlFor="postalInput">Postal Address</label>
             <input
-              onChange={this.handleAddressChange}
+              onChange={onInputChange}
               defaultValue={address.text}
               type="number"
               id="postalAddressInput"
-              name="postalAddress"
+              name="address"
               placeholder="e.g. 72186"
             />
           </div>
@@ -159,7 +76,7 @@ class General extends Component {
           <div>
             <label htmlFor="cityInput">City</label>
             <input
-              onChange={this.handleCityChange}
+              onChange={onInputChange}
               defaultValue={city.text}
               type="text"
               id="cityInput"
@@ -170,7 +87,7 @@ class General extends Component {
           <div>
             <label htmlFor="countryInput">Country</label>
             <input
-              onChange={this.handleCountryChange}
+              onChange={onInputChange}
               defaultValue={country.text}
               type="text"
               id="countryInput"
@@ -181,7 +98,7 @@ class General extends Component {
           <div>
             <label htmlFor="postalInput">Postcode</label>
             <input
-              onChange={this.handleCodeChange}
+              onChange={onInputChange}
               defaultValue={postcode.text}
               type="number"
               id="postalCodeInput"
@@ -194,7 +111,7 @@ class General extends Component {
           <div>
             <label htmlFor="phoneInput">Phone</label>
             <input
-              onChange={this.handlePhoneChange}
+              onChange={onInputChange}
               defaultValue={phone.text}
               type="tel"
               id="phoneInput"
@@ -205,7 +122,7 @@ class General extends Component {
           <div>
             <label htmlFor="emailInput">Email Address</label>
             <input
-              onChange={this.handleEmailChange}
+              onChange={onInputChange}
               defaultValue={email.text}
               type="email"
               id="emailInput"

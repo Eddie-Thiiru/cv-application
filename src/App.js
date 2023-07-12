@@ -10,14 +10,111 @@ class App extends Component {
     super();
 
     this.state = {
+      form: "active",
+      general: {
+        firstName: { text: "" },
+        surname: { text: "" },
+        profession: { text: "" },
+        city: { text: "" },
+        country: { text: "" },
+        address: { text: "" },
+        postcode: { text: "" },
+        phone: { text: "" },
+        email: { text: "" },
+      },
+      work: {
+        jobTitle: { text: "" },
+        employer: { text: "" },
+        workStartDate: { text: "" },
+        workEndDate: { text: "" },
+        workDescription: { text: "" },
+      },
+      education: {
+        school: { text: "" },
+        degree: { text: "" },
+        field: { text: "" },
+        schoolStartDate: { text: "" },
+        schoolEndDate: { text: "" },
+      },
+      skills: { skill: { text: "" }, level: { text: "" } },
+      summary: { text: "" },
       data: [],
-      form: "empty",
     };
+
+    this.handleGeneralChange = this.handleGeneralChange.bind(this);
+
+    this.handleWorkChange = this.handleWorkChange.bind(this);
+
+    this.handleEducationChange = this.handleEducationChange.bind(this);
+
+    this.handleSkillChange = this.handleSkillChange.bind(this);
+
+    this.handleSummaryChange = this.handleSummaryChange.bind(this);
 
     this.onSubmitForm = this.onSubmitForm.bind(this);
 
     this.editCV = this.editCV.bind(this);
   }
+
+  handleGeneralChange = (e) => {
+    const inputName = e.target.name;
+
+    this.setState({
+      general: {
+        ...this.state.general,
+        [inputName]: {
+          text: e.target.value,
+        },
+      },
+    });
+  };
+
+  handleWorkChange = (e) => {
+    const inputName = e.target.name;
+
+    this.setState({
+      work: {
+        ...this.state.work,
+        [inputName]: {
+          text: e.target.value,
+        },
+      },
+    });
+  };
+
+  handleEducationChange = (e) => {
+    const inputName = e.target.name;
+
+    this.setState({
+      education: {
+        ...this.state.education,
+        [inputName]: {
+          text: e.target.value,
+        },
+      },
+    });
+  };
+
+  handleSkillChange = (e) => {
+    const inputName = e.target.name;
+
+    this.setState({
+      skills: {
+        ...this.state.skills,
+        [inputName]: {
+          text: e.target.value,
+        },
+      },
+    });
+  };
+
+  handleSummaryChange = (e) => {
+    this.setState({
+      summary: {
+        text: e.target.value,
+      },
+    });
+  };
 
   onSubmitForm = (e) => {
     e.preventDefault();
@@ -38,15 +135,31 @@ class App extends Component {
   };
 
   editCV = (e) => {
-    console.log("edit");
+    this.setState({
+      data: this.state.data,
+      form: "active",
+    });
   };
 
   render() {
-    const { data, form } = this.state;
+    const { form, general, work, education, skills, summary, data } =
+      this.state;
 
     let content =
-      form === "empty" ? (
-        <Form onSubmitCV={this.onSubmitForm} />
+      form === "active" ? (
+        <Form
+          generalSection={general}
+          workSection={work}
+          educationSection={education}
+          skillSection={skills}
+          summarySection={summary}
+          inputGeneralChange={this.handleGeneralChange}
+          inputWorkChange={this.handleWorkChange}
+          inputEducationChange={this.handleEducationChange}
+          inputSkillChange={this.handleSkillChange}
+          inputSummaryChange={this.handleSummaryChange}
+          onSubmitCV={this.onSubmitForm}
+        />
       ) : (
         <Overview formData={data} edit={this.editCV} />
       );

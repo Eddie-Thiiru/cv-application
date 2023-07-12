@@ -15,7 +15,7 @@ class Overview extends Component {
       firstName,
       surname,
       profession,
-      postalAddress,
+      address,
       city,
       country,
       postcode,
@@ -47,8 +47,7 @@ class Overview extends Component {
           </div>
           <div className="contacts">
             <p>
-              <b>Address</b> P.O. Box {postalAddress}-{postcode}, {city}{" "}
-              {country}
+              <b>Address</b> P.O. Box {address}-{postcode}, {city} {country}
             </p>
             <p>
               <b>Phone</b> {phone}

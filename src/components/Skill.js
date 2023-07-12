@@ -4,32 +4,11 @@ import "../styles/Skill.css";
 class Skill extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      skill: { text: "" },
-      level: { text: "" },
-    };
   }
 
-  handleSkillChange = (e) => {
-    this.setState({
-      skill: {
-        text: e.target.value,
-      },
-    });
-  };
-
-  handleLevelChange = (e) => {
-    this.setState({
-      level: {
-        text: e.target.value,
-      },
-    });
-  };
-
   render() {
-    const { skill } = this.state;
-    const { skillId, rmSkillBtnClicked } = this.props;
+    const { skills, skillId, rmSkillBtnClicked, onInputChange } = this.props;
+    const { skill, level } = skills;
 
     return (
       <div className="skill">
@@ -37,7 +16,7 @@ class Skill extends Component {
           <div>
             <label htmlFor="skillInput" />
             <input
-              onChange={this.handleSkillChange}
+              onChange={onInputChange}
               defaultValue={skill.text}
               type="text"
               id="skillInput"
@@ -47,7 +26,12 @@ class Skill extends Component {
         </div>
         <div className="wrapper">
           <label htmlFor="level">Skill Level</label>
-          <select id="level" name="level" onChange={this.handleLevelChange}>
+          <select
+            id="level"
+            name="level"
+            defaultValue={level.text}
+            onChange={onInputChange}
+          >
             <option defaultValue="novice">Novice</option>
             <option defaultValue="intermediate">Intermediate</option>
             <option defaultValue="advanced">Advanced</option>

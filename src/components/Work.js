@@ -2,67 +2,14 @@ import React, { Component } from "react";
 import "../styles/Work.css";
 
 class Work extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      job: { text: "" },
-      employer: { text: "" },
-      start: { text: "" },
-      end: { text: "" },
-      description: { text: "" },
-    };
-
-    this.onClick = this.onClickBtn.bind(this);
+  constructor(props) {
+    super(props);
   }
 
-  handleJobChange = (e) => {
-    this.setState({
-      job: {
-        text: e.target.value,
-      },
-    });
-  };
-
-  handleEmployerChange = (e) => {
-    this.setState({
-      employer: {
-        text: e.target.value,
-      },
-    });
-  };
-
-  handleStartChange = (e) => {
-    this.setState({
-      start: {
-        text: e.target.value,
-      },
-    });
-  };
-
-  handleEndChange = (e) => {
-    this.setState({
-      end: {
-        text: e.target.value,
-      },
-    });
-  };
-
-  handleDescriptionChange = (e) => {
-    this.setState({
-      description: {
-        text: e.target.value,
-      },
-    });
-  };
-
-  onClickBtn = () => {
-    console.log("clicked");
-  };
-
   render() {
-    const { job, employer, start, end, description } = this.state;
-    const { workId, rmWorkBtnClicked } = this.props;
+    const { work, workId, rmWorkBtnClicked, onInputChange } = this.props;
+    const { jobTitle, employer, workStartDate, workEndDate, workDescription } =
+      work;
 
     return (
       <div className="work">
@@ -70,8 +17,8 @@ class Work extends Component {
           <div>
             <label htmlFor="jobInput">Job Title</label>
             <input
-              onChange={this.handleJobChange}
-              defaultValue={job.text}
+              onChange={onInputChange}
+              defaultValue={jobTitle.text}
               type="text"
               id="jobInput"
               name="jobTitle"
@@ -81,7 +28,7 @@ class Work extends Component {
           <div>
             <label htmlFor="employerInput">Employer</label>
             <input
-              onChange={this.handleEmployerChange}
+              onChange={onInputChange}
               defaultValue={employer.text}
               type="text"
               id="employerInput"
@@ -94,8 +41,8 @@ class Work extends Component {
           <div>
             <label htmlFor="workStartInput">Start Date</label>
             <input
-              onChange={this.handleStartChange}
-              defaultValue={start.text}
+              onChange={onInputChange}
+              defaultValue={workStartDate.text}
               type="date"
               id="workStartInput"
               name="workStartDate"
@@ -104,8 +51,8 @@ class Work extends Component {
           <div>
             <label htmlFor="workEndInput">End Date</label>
             <input
-              onChange={this.handleEndChange}
-              defaultValue={end.text}
+              onChange={onInputChange}
+              defaultValue={workEndDate.text}
               type="date"
               id="workEndInput"
               name="workEndDate"
@@ -116,8 +63,8 @@ class Work extends Component {
           <div>
             <label htmlFor="descriptionInput" />
             <textarea
-              onChange={this.handleDescriptionChange}
-              defaultValue={description.text}
+              onChange={onInputChange}
+              defaultValue={workDescription.text}
               id="descriptionInput"
               name="workDescription"
               placeholder="Type your achievements and responsibilities here."

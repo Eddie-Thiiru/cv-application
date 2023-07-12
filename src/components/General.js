@@ -7,7 +7,7 @@ class General extends Component {
   }
 
   render() {
-    const { general, onInputChange } = this.props;
+    const { generalData, onInputChange } = this.props;
     const {
       firstName,
       surname,
@@ -18,7 +18,7 @@ class General extends Component {
       postcode,
       phone,
       email,
-    } = general;
+    } = generalData;
 
     return (
       <div className="general">
@@ -27,7 +27,7 @@ class General extends Component {
             <label htmlFor="firstNameInput">First Name</label>
             <input
               onChange={onInputChange}
-              defaultValue={firstName.text}
+              defaultValue={firstName}
               type="text"
               id="firstNameInput"
               name="firstName"
@@ -38,7 +38,7 @@ class General extends Component {
             <label htmlFor="surnameInput">Surname</label>
             <input
               onChange={onInputChange}
-              defaultValue={surname.text}
+              defaultValue={surname}
               type="text"
               id="surnameInput"
               name="surname"
@@ -51,7 +51,7 @@ class General extends Component {
             <label htmlFor="professionInput">Profession</label>
             <input
               onChange={onInputChange}
-              defaultValue={profession.text}
+              defaultValue={profession}
               type="text"
               id="professionInput"
               name="profession"
@@ -64,7 +64,7 @@ class General extends Component {
             <label htmlFor="postalInput">Postal Address</label>
             <input
               onChange={onInputChange}
-              defaultValue={address.text}
+              defaultValue={address}
               type="number"
               id="postalAddressInput"
               name="address"
@@ -77,7 +77,7 @@ class General extends Component {
             <label htmlFor="cityInput">City</label>
             <input
               onChange={onInputChange}
-              defaultValue={city.text}
+              defaultValue={city}
               type="text"
               id="cityInput"
               name="city"
@@ -88,7 +88,7 @@ class General extends Component {
             <label htmlFor="countryInput">Country</label>
             <input
               onChange={onInputChange}
-              defaultValue={country.text}
+              defaultValue={country}
               type="text"
               id="countryInput"
               name="country"
@@ -99,7 +99,7 @@ class General extends Component {
             <label htmlFor="postalInput">Postcode</label>
             <input
               onChange={onInputChange}
-              defaultValue={postcode.text}
+              defaultValue={postcode}
               type="number"
               id="postalCodeInput"
               name="postcode"
@@ -112,7 +112,7 @@ class General extends Component {
             <label htmlFor="phoneInput">Phone</label>
             <input
               onChange={onInputChange}
-              defaultValue={phone.text}
+              defaultValue={phone}
               type="tel"
               id="phoneInput"
               name="phone"
@@ -123,7 +123,7 @@ class General extends Component {
             <label htmlFor="emailInput">Email Address</label>
             <input
               onChange={onInputChange}
-              defaultValue={email.text}
+              defaultValue={email}
               type="email"
               id="emailInput"
               name="email"

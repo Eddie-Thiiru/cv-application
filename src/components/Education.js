@@ -7,9 +7,15 @@ class Education extends Component {
   }
 
   render() {
-    const { education, educationId, rmEducationBtnClicked, onInputChange } =
-      this.props;
-    const { school, degree, field, schoolStartDate, schoolEndDate } = education;
+    const {
+      educationData,
+      num,
+      educationId,
+      rmEducationBtnClicked,
+      onInputChange,
+    } = this.props;
+    const { school, degree, field, schoolStartDate, schoolEndDate } =
+      educationData;
 
     return (
       <div className="education">
@@ -18,10 +24,11 @@ class Education extends Component {
             <label htmlFor="schoolNameInput">School Name</label>
             <input
               onChange={onInputChange}
-              defaultValue={school.text}
+              defaultValue={school}
               type="text"
               id="schoolNameInput"
               name="school"
+              data-key={num}
               placeholder="e.g. University of Oxford"
             />
           </div>
@@ -31,10 +38,11 @@ class Education extends Component {
             <label htmlFor="degreeInput">Degree</label>
             <input
               onChange={onInputChange}
-              defaultValue={degree.text}
+              defaultValue={degree}
               type="text"
               id="degreeInput"
               name="degree"
+              data-key={num}
               placeholder="e.g. Bachelor of Computer Science"
             />
           </div>
@@ -42,10 +50,11 @@ class Education extends Component {
             <label htmlFor="studyFieldInput">Field of Study</label>
             <input
               onChange={onInputChange}
-              defaultValue={field.text}
+              defaultValue={field}
               type="text"
               id="studyFieldInput"
               name="field"
+              data-key={num}
               placeholder="e.g. Computer Science"
             />
           </div>
@@ -55,20 +64,22 @@ class Education extends Component {
             <label htmlFor="schoolStartInput">Start Date</label>
             <input
               onChange={onInputChange}
-              defaultValue={schoolStartDate.text}
+              defaultValue={schoolStartDate}
               type="date"
               id="schoolStartInput"
               name="schoolStartDate"
+              data-key={num}
             />
           </div>
           <div>
             <label htmlFor="schoolEndInput">End Date</label>
             <input
               onChange={onInputChange}
-              defaultValue={schoolEndDate.text}
+              defaultValue={schoolEndDate}
               type="date"
               id="schoolEndInput"
               name="schoolEndDate"
+              data-key={num}
             />
           </div>
         </div>

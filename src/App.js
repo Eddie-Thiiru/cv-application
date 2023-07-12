@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Form from "./components/Form";
 import Overview from "./components/Overview";
+import uniqid from "uniqid";
 import "./styles/App.css";
 
 class App extends Component {
@@ -12,33 +13,39 @@ class App extends Component {
     this.state = {
       form: "active",
       general: {
-        firstName: { text: "" },
-        surname: { text: "" },
-        profession: { text: "" },
-        city: { text: "" },
-        country: { text: "" },
-        address: { text: "" },
-        postcode: { text: "" },
-        phone: { text: "" },
-        email: { text: "" },
+        firstName: "",
+        surname: "",
+        profession: "",
+        city: "",
+        country: "",
+        address: "",
+        postcode: "",
+        phone: "",
+        email: "",
       },
-      work: {
-        jobTitle: { text: "" },
-        employer: { text: "" },
-        workStartDate: { text: "" },
-        workEndDate: { text: "" },
-        workDescription: { text: "" },
-      },
-      education: {
-        school: { text: "" },
-        degree: { text: "" },
-        field: { text: "" },
-        schoolStartDate: { text: "" },
-        schoolEndDate: { text: "" },
-      },
-      skills: { skill: { text: "" }, level: { text: "" } },
+      work: [
+        {
+          jobTitle: "",
+          employer: "",
+          workStartDate: "",
+          workEndDate: "",
+          workDescription: "",
+          id: uniqid(),
+        },
+      ],
+
+      education: [
+        {
+          school: "",
+          degree: "",
+          field: "",
+          schoolStartDate: "",
+          schoolEndDate: "",
+          id: uniqid(),
+        },
+      ],
+      skills: [{ skill: "", level: "", id: uniqid() }],
       summary: { text: "" },
-      data: [],
     };
 
     this.handleGeneralChange = this.handleGeneralChange.bind(this);
@@ -51,6 +58,18 @@ class App extends Component {
 
     this.handleSummaryChange = this.handleSummaryChange.bind(this);
 
+    this.addWork = this.addWork.bind(this);
+
+    this.addEducation = this.addEducation.bind(this);
+
+    this.addSkill = this.addSkill.bind(this);
+
+    this.removeWork = this.removeWork.bind(this);
+
+    this.removeEducation = this.removeEducation.bind(this);
+
+    this.removeSkill = this.removeSkill.bind(this);
+
     this.onSubmitForm = this.onSubmitForm.bind(this);
 
     this.editCV = this.editCV.bind(this);
@@ -62,49 +81,53 @@ class App extends Component {
     this.setState({
       general: {
         ...this.state.general,
-        [inputName]: {
-          text: e.target.value,
-        },
+        [inputName]: e.target.value,
       },
     });
   };
 
   handleWorkChange = (e) => {
     const inputName = e.target.name;
+    const inputIndex = parseInt(e.target.dataset.key);
 
     this.setState({
-      work: {
-        ...this.state.work,
-        [inputName]: {
-          text: e.target.value,
-        },
-      },
+      work: this.state.work.map((item, index) => {
+        if (index === inputIndex) {
+          return { ...item, [inputName]: e.target.value };
+        } else {
+          return item;
+        }
+      }),
     });
   };
 
   handleEducationChange = (e) => {
     const inputName = e.target.name;
+    const inputIndex = parseInt(e.target.dataset.key);
 
     this.setState({
-      education: {
-        ...this.state.education,
-        [inputName]: {
-          text: e.target.value,
-        },
-      },
+      education: this.state.education.map((item, index) => {
+        if (index === inputIndex) {
+          return { ...item, [inputName]: e.target.value };
+        } else {
+          return item;
+        }
+      }),
     });
   };
 
   handleSkillChange = (e) => {
     const inputName = e.target.name;
+    const inputIndex = parseInt(e.target.dataset.key);
 
     this.setState({
-      skills: {
-        ...this.state.skills,
-        [inputName]: {
-          text: e.target.value,
-        },
-      },
+      skills: this.state.skills.map((item, index) => {
+        if (index === inputIndex) {
+          return { ...item, [inputName]: e.target.value };
+        } else {
+          return item;
+        }
+      }),
     });
   };
 
@@ -116,20 +139,66 @@ class App extends Component {
     });
   };
 
+  addWork = () => {
+    this.setState({
+      work: [
+        ...this.state.work,
+        {
+          jobTitle: "",
+          employer: "",
+          workStartDate: "",
+          workEndDate: "",
+          workDescription: "",
+          id: uniqid(),
+        },
+      ],
+    });
+  };
+
+  addEducation = () => {
+    this.setState({
+      education: [
+        ...this.state.education,
+        {
+          school: "",
+          degree: "",
+          field: "",
+          schoolStartDate: "",
+          schoolEndDate: "",
+          id: uniqid(),
+        },
+      ],
+    });
+  };
+
+  addSkill = () => {
+    this.setState({
+      skills: [...this.state.skills, { skill: "", level: "", id: uniqid() }],
+    });
+  };
+
+  removeWork = (e) => {
+    this.setState({
+      work: this.state.work.filter((item) => item.id !== e.target.id),
+    });
+  };
+
+  removeEducation = (e) => {
+    this.setState({
+      education: this.state.education.filter((item) => item.id !== e.target.id),
+    });
+  };
+
+  removeSkill = (e) => {
+    this.setState({
+      skills: this.state.skills.filter((item) => item.id !== e.target.id),
+    });
+  };
+
   onSubmitForm = (e) => {
     e.preventDefault();
 
-    const formData = Object.fromEntries(new FormData(e.target));
-
-    let array = [];
-
-    for (let key in formData) {
-      let obj = { [key]: formData[key] };
-      array.push(obj);
-    }
-
     this.setState({
-      data: this.state.data.concat(array),
       form: "submitted",
     });
   };
@@ -148,20 +217,33 @@ class App extends Component {
     let content =
       form === "active" ? (
         <Form
-          generalSection={general}
-          workSection={work}
-          educationSection={education}
-          skillSection={skills}
-          summarySection={summary}
+          generalData={general}
+          workArray={work}
+          educationArray={education}
+          skillsArray={skills}
+          summaryData={summary}
           inputGeneralChange={this.handleGeneralChange}
           inputWorkChange={this.handleWorkChange}
           inputEducationChange={this.handleEducationChange}
           inputSkillChange={this.handleSkillChange}
           inputSummaryChange={this.handleSummaryChange}
+          addWork={this.addWork}
+          addEducation={this.addEducation}
+          addSkill={this.addSkill}
+          removeWork={this.removeWork}
+          removeEducation={this.removeEducation}
+          removeSkill={this.removeSkill}
           onSubmitCV={this.onSubmitForm}
         />
       ) : (
-        <Overview formData={data} edit={this.editCV} />
+        <Overview
+          generalData={general}
+          workArray={work}
+          educationArray={education}
+          skillsArray={skills}
+          summaryData={summary}
+          edit={this.editCV}
+        />
       );
 
     return (

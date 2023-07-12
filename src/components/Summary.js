@@ -7,7 +7,7 @@ class Summary extends Component {
   }
 
   render() {
-    const { summary, onInputChange } = this.props;
+    const { summaryData, onInputChange } = this.props;
 
     return (
       <div className="summary">
@@ -16,7 +16,7 @@ class Summary extends Component {
           <label htmlFor="summaryInput" />
           <textarea
             onChange={onInputChange}
-            defaultValue={summary.text}
+            defaultValue={summaryData.text}
             id="summaryInput"
             name="summary"
             placeholder="Write your summary here."

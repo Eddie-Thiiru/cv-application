@@ -5,142 +5,70 @@ import Work from "./Work";
 import Skill from "./Skill";
 import Summary from "./Summary";
 import "../styles/Form.css";
-import uniqid from "uniqid";
 
 class Form extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      work: {
-        items: [{ item: "work", id: uniqid() }],
-      },
-      education: {
-        items: [{ item: "education", id: uniqid() }],
-      },
-      skill: {
-        items: [{ item: "skill", id: uniqid() }],
-      },
-    };
-
-    this.removeWork = this.removeWork.bind(this);
-
-    this.removeEducation = this.removeEducation.bind(this);
-
-    this.removeSkill = this.removeSkill.bind(this);
   }
-
-  addWork = () => {
-    let newItem = { item: "work", id: uniqid() };
-
-    this.setState({
-      work: {
-        items: this.state.work.items.concat(newItem),
-      },
-    });
-  };
-
-  addEducation = () => {
-    let newItem = { item: "education", id: uniqid() };
-
-    this.setState({
-      education: {
-        items: this.state.education.items.concat(newItem),
-      },
-    });
-  };
-
-  addSkill = () => {
-    let newItem = { item: "education", id: uniqid() };
-
-    this.setState({
-      skill: {
-        items: this.state.skill.items.concat(newItem),
-      },
-    });
-  };
-
-  removeWork = (e) => {
-    this.setState({
-      work: {
-        items: this.state.work.items.filter((item) => {
-          return item.id !== e.target.id;
-        }),
-      },
-    });
-  };
-
-  removeEducation = (e) => {
-    this.setState({
-      education: {
-        items: this.state.education.items.filter((item) => {
-          return item.id !== e.target.id;
-        }),
-      },
-    });
-  };
-
-  removeSkill = (e) => {
-    this.setState({
-      skill: {
-        items: this.state.skill.items.filter((item) => {
-          return item.id !== e.target.id;
-        }),
-      },
-    });
-  };
 
   render() {
     const {
-      generalSection,
-      workSection,
-      educationSection,
-      skillSection,
-      summarySection,
+      generalData,
+      workArray,
+      educationArray,
+      skillsArray,
+      summaryData,
       inputGeneralChange,
       inputWorkChange,
       inputEducationChange,
       inputSkillChange,
       inputSummaryChange,
+      addWork,
+      addEducation,
+      addSkill,
+      removeWork,
+      removeEducation,
+      removeSkill,
       onSubmitCV,
     } = this.props;
-    const { work, education, skill } = this.state;
 
     return (
       <form onSubmit={onSubmitCV} className="form">
         <section>
           <h3>Personal Information</h3>
           <General
-            general={generalSection}
+            generalData={generalData}
             onInputChange={inputGeneralChange}
           />
         </section>
         <section>
           <h3>Work History</h3>
           <div className="workContainer">
-            {work.items.map((item) => (
+            {workArray.map((item, index) => (
               <Work
-                work={workSection}
+                workData={item}
+                num={index}
                 key={item.id}
                 workId={item.id}
-                rmWorkBtnClicked={this.removeWork}
+                rmWorkBtnClicked={removeWork}
                 onInputChange={inputWorkChange}
               />
             ))}
           </div>
-          <button type="button" className="workAddBtn" onClick={this.addWork}>
+          <button type="button" className="workAddBtn" onClick={addWork}>
             ADD WORK
           </button>
         </section>
         <section>
           <h3>Education</h3>
           <div className="educationContainer">
-            {education.items.map((item) => (
+            {educationArray.map((item, index) => (
               <Education
-                education={educationSection}
+                educationData={item}
+                num={index}
                 key={item.id}
                 educationId={item.id}
-                rmEducationBtnClicked={this.removeEducation}
+                rmEducationBtnClicked={removeEducation}
                 onInputChange={inputEducationChange}
               />
             ))}
@@ -148,7 +76,7 @@ class Form extends Component {
           <button
             type="button"
             className="educationAddBtn"
-            onClick={this.addEducation}
+            onClick={addEducation}
           >
             ADD EDUCATION
           </button>
@@ -156,23 +84,24 @@ class Form extends Component {
         <section>
           <h3>Skills</h3>
           <div className="skillContainer">
-            {skill.items.map((item) => (
+            {skillsArray.map((item, index) => (
               <Skill
-                skills={skillSection}
+                skillData={item}
+                num={index}
                 key={item.id}
                 skillId={item.id}
-                rmSkillBtnClicked={this.removeSkill}
+                rmSkillBtnClicked={removeSkill}
                 onInputChange={inputSkillChange}
               />
             ))}
           </div>
-          <button type="button" className="skillAddBtn" onClick={this.addSkill}>
+          <button type="button" className="skillAddBtn" onClick={addSkill}>
             ADD SKILL
           </button>
         </section>
         <section>
           <Summary
-            summary={summarySection}
+            summaryData={summaryData}
             onInputChange={inputSummaryChange}
           />
         </section>

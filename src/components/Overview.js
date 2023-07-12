@@ -9,8 +9,14 @@ class Overview extends Component {
   }
 
   render() {
-    const { formData, edit } = this.props;
-    const data = Object.assign({}, ...formData);
+    const {
+      generalData,
+      workArray,
+      educationArray,
+      skillsArray,
+      summaryData,
+      edit,
+    } = this.props;
     const {
       firstName,
       surname,
@@ -21,20 +27,7 @@ class Overview extends Component {
       postcode,
       phone,
       email,
-      jobTitle,
-      employer,
-      workStartDate,
-      workEndDate,
-      workDescription,
-      school,
-      degree,
-      field,
-      schoolStartDate,
-      schoolEndDate,
-      skill,
-      level,
-      summary,
-    } = data;
+    } = generalData;
 
     return (
       <div className="overview">
@@ -58,35 +51,25 @@ class Overview extends Component {
           </div>
         </div>
         <div className="cvSummary">
-          <p>{summary}</p>
+          <p>{summaryData.text}</p>
         </div>
         <div className="cvWorkHistory">
           <h2>Work History</h2>
-          <JobCard
-            job={{
-              jobTitle,
-              employer,
-              workStartDate,
-              workEndDate,
-              workDescription,
-            }}
-          />
+          {workArray.map((item, index) => (
+            <JobCard key={index} job={item} />
+          ))}
         </div>
         <div className="cvEducationHistory">
           <h2>Education</h2>
-          <EducationCard
-            education={{
-              school,
-              degree,
-              field,
-              schoolStartDate,
-              schoolEndDate,
-            }}
-          />
+          {educationArray.map((item, index) => (
+            <EducationCard key={index} education={item} />
+          ))}
         </div>
         <div className="cvSkills">
           <h2>Skills</h2>
-          <SkillCard skill={{ skill, level }} />
+          {skillsArray.map((item, index) => (
+            <SkillCard key={index} skill={item} />
+          ))}
         </div>
         <button className="editBtn" onClick={edit}>
           Edit

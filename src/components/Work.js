@@ -7,9 +7,10 @@ class Work extends Component {
   }
 
   render() {
-    const { work, workId, rmWorkBtnClicked, onInputChange } = this.props;
+    const { workData, num, workId, rmWorkBtnClicked, onInputChange } =
+      this.props;
     const { jobTitle, employer, workStartDate, workEndDate, workDescription } =
-      work;
+      workData;
 
     return (
       <div className="work">
@@ -18,10 +19,11 @@ class Work extends Component {
             <label htmlFor="jobInput">Job Title</label>
             <input
               onChange={onInputChange}
-              defaultValue={jobTitle.text}
+              defaultValue={jobTitle}
               type="text"
               id="jobInput"
               name="jobTitle"
+              data-key={num}
               placeholder="e.g. Junior Developer"
             />
           </div>
@@ -29,10 +31,11 @@ class Work extends Component {
             <label htmlFor="employerInput">Employer</label>
             <input
               onChange={onInputChange}
-              defaultValue={employer.text}
+              defaultValue={employer}
               type="text"
               id="employerInput"
               name="employer"
+              data-key={num}
               placeholder="e.g. Alphabet Inc."
             />
           </div>
@@ -42,20 +45,22 @@ class Work extends Component {
             <label htmlFor="workStartInput">Start Date</label>
             <input
               onChange={onInputChange}
-              defaultValue={workStartDate.text}
+              defaultValue={workStartDate}
               type="date"
               id="workStartInput"
               name="workStartDate"
+              data-key={num}
             />
           </div>
           <div>
             <label htmlFor="workEndInput">End Date</label>
             <input
               onChange={onInputChange}
-              defaultValue={workEndDate.text}
+              defaultValue={workEndDate}
               type="date"
               id="workEndInput"
               name="workEndDate"
+              data-key={num}
             />
           </div>
         </div>
@@ -64,9 +69,10 @@ class Work extends Component {
             <label htmlFor="descriptionInput" />
             <textarea
               onChange={onInputChange}
-              defaultValue={workDescription.text}
+              defaultValue={workDescription}
               id="descriptionInput"
               name="workDescription"
+              data-key={num}
               placeholder="Type your achievements and responsibilities here."
             />
           </div>

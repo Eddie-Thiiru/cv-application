@@ -37,7 +37,7 @@ class Overview extends Component {
             <h1>
               {firstName} {surname}
             </h1>
-            <h3>{profession}</h3>
+            <h2>{profession}</h2>
           </div>
           <div className="contacts">
             <p>

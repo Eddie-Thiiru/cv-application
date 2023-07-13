@@ -22,12 +22,6 @@
   flex-direction: column;
 }
 
-.workWrapper textarea {
-  height: 200px;
-  padding: 5px;
-  resize: none;
-}
-
 .workWrapper:nth-child(3) > div {
   grid-column: 1 / 3;
 }

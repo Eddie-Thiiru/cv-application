@@ -38,16 +38,8 @@
   padding-bottom: 20px;
 }
 
-.overview h3 {
-  font-size: 1.25rem;
-}
-
-.person h1 {
-  font-size: 3rem;
-}
-
-.person h3 {
-  font-size: 1.5rem;
+.overview h1 {
+  font-size: 2.5rem;
 }
 
 .contacts {
@@ -75,6 +67,12 @@
 
 .skillLevel {
   justify-self: end;
+}
+
+.cvSummary p,
+.jobDetails p,
+.educationDetails p {
+  line-height: 1.6;
 }
 
 .jobDates p,

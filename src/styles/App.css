@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk&family=Nunito&family=Secular+One&display=swap");
+
 * {
   padding: 0;
   margin: 0;
@@ -7,6 +9,7 @@
 body {
   height: 100%;
   font-size: 1rem;
+  font-family: "Hanken Grotesk", sans-serif;
 }
 
 #root,
@@ -18,16 +21,15 @@ body {
 .app {
   padding: 10px;
   display: grid;
-  grid-template-columns: 100px 750px 100px;
+  grid-template-columns: 1fr 750px 1fr;
   grid-template-rows: 100px 1fr 100px;
   justify-content: center;
 }
 
 .header {
-  grid-column: 2 / 3;
+  grid-column: 1 / 4;
+  font-family: "Secular One", sans-serif;
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .main {
@@ -35,8 +37,12 @@ body {
 }
 
 .footer {
-  grid-column: 2 / 3;
+  grid-column: 1 / 4;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.header h1 {
+  font-size: 2.5rem;
 }

@@ -14,12 +14,24 @@ section {
 }
 
 label {
+  font-weight: 600;
   padding: 5px 0px;
 }
 
 input {
   height: 35px;
   padding: 5px;
+  font-family: "Nunito", sans-serif;
+  font-size: 0.875rem;
+}
+
+textarea {
+  height: 250px;
+  font-family: "Nunito", sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.62;
+  padding: 5px;
+  resize: none;
 }
 
 button {
@@ -30,4 +42,8 @@ button {
   height: 40px;
   width: 120px;
   align-self: center;
+}
+
+input::placeholder,
+textarea::placeholder {
 }

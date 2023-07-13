@@ -3,6 +3,7 @@ import JobCard from "./JobCard";
 import EducationCard from "./EducationCard";
 import SkillCard from "./SkillCard";
 import "../styles/Overview.css";
+import { MdEdit } from "react-icons/md";
 
 class Overview extends Component {
   constructor(props) {
@@ -73,6 +74,7 @@ class Overview extends Component {
           ))}
         </div>
         <button type="button" className="editBtn" onClick={edit}>
+          <MdEdit size="20px" pointerEvents="none" />
           EDIT
         </button>
       </div>

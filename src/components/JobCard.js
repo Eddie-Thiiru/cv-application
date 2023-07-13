@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { format, parseISO } from "date-fns";
 
 class JobCard extends Component {
   constructor(props) {
@@ -9,11 +10,14 @@ class JobCard extends Component {
     const { jobTitle, employer, workStartDate, workEndDate, workDescription } =
       this.props.job;
 
+    const start = format(parseISO(workStartDate), "MMM yyyy");
+    const end = format(parseISO(workEndDate), "MMM yyyy");
+
     return (
       <div className="jobCard">
         <div className="jobDates">
           <p>
-            {workStartDate}-{workEndDate}
+            {start}-{end}
           </p>
         </div>
         <div className="jobDetails">

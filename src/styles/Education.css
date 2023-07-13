@@ -37,3 +37,7 @@
   border: none;
   align-self: self-end;
 }
+
+.educationAddBtn:hover {
+  background-color: #1759b3;
+}

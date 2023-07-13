@@ -50,3 +50,7 @@
   display: grid;
   grid-template-columns: 1fr 3fr;
 }
+
+.skillAddBtn:hover {
+  background-color: #1759b3;
+}

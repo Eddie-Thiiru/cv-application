@@ -41,3 +41,7 @@
   border: none;
   align-self: self-end;
 }
+
+.workAddBtn:hover {
+  background-color: #1759b3;
+}

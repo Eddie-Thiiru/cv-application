@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../styles/Skill.css";
+import { FaTrashAlt } from "react-icons/fa";
 
 class Skill extends Component {
   constructor(props) {
@@ -47,7 +48,7 @@ class Skill extends Component {
           className="delSkillBtn"
           id={skillId}
         >
-          DELETE
+          <FaTrashAlt size="20px" pointerEvents="none" />
         </button>
       </div>
     );

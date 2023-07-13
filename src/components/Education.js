@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../styles/Education.css";
+import { FaTrashAlt } from "react-icons/fa";
 
 class Education extends Component {
   constructor(props) {
@@ -89,7 +90,7 @@ class Education extends Component {
           className="delEducationBtn"
           id={educationId}
         >
-          DELETE
+          <FaTrashAlt size="20px" pointerEvents="none" />
         </button>
       </div>
     );

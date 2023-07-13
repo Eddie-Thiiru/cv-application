@@ -1,7 +1,7 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 50px;
 }
 
 section {
@@ -23,19 +23,17 @@ input {
   padding: 5px;
   font-family: "Nunito", sans-serif;
   font-size: 0.875rem;
+  border: 1px solid #98bef2;
 }
 
 textarea {
   height: 250px;
+  border: 1px solid #98bef2;
   font-family: "Nunito", sans-serif;
   font-size: 0.875rem;
   line-height: 1.62;
   padding: 5px;
   resize: none;
-}
-
-button {
-  padding: 5px 10px;
 }
 
 .submitBtn {
@@ -44,6 +42,8 @@ button {
   align-self: center;
 }
 
-input::placeholder,
-textarea::placeholder {
+input:focus,
+textarea:focus {
+  outline: none;
+  border: 2px solid #1b65cf;
 }

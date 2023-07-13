@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../styles/Work.css";
+import { FaTrashAlt } from "react-icons/fa";
 
 class Work extends Component {
   constructor(props) {
@@ -83,7 +84,7 @@ class Work extends Component {
           className="delJobBtn"
           id={workId}
         >
-          DELETE
+          <FaTrashAlt size="20px" pointerEvents="none" />
         </button>
       </div>
     );

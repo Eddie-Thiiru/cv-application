@@ -19,21 +19,24 @@ body {
 }
 
 .app {
-  padding: 10px;
   display: grid;
   grid-template-columns: 1fr 750px 1fr;
-  grid-template-rows: 100px 1fr 100px;
+  grid-template-rows: 80px 1fr 100px;
   justify-content: center;
 }
 
 .header {
   grid-column: 1 / 4;
   font-family: "Secular One", sans-serif;
+  background-color: #092347;
+  padding: 10px;
   display: flex;
+  align-items: center;
 }
 
 .main {
   grid-column: 2 / 3;
+  padding: 40px 0px;
 }
 
 .footer {
@@ -45,4 +48,5 @@ body {
 
 .header h1 {
   font-size: 2.5rem;
+  color: #f8f9fa;
 }

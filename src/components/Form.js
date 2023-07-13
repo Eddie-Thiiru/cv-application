@@ -5,6 +5,7 @@ import Work from "./Work";
 import Skill from "./Skill";
 import Summary from "./Summary";
 import "../styles/Form.css";
+import { LuPlus } from "react-icons/lu";
 
 class Form extends Component {
   constructor(props) {
@@ -56,6 +57,7 @@ class Form extends Component {
             ))}
           </div>
           <button type="button" className="workAddBtn" onClick={addWork}>
+            <LuPlus color="white" size="20px" pointerEvents="none" />
             ADD WORK
           </button>
         </section>
@@ -78,6 +80,7 @@ class Form extends Component {
             className="educationAddBtn"
             onClick={addEducation}
           >
+            <LuPlus color="white" size="20px" pointerEvents="none" />
             ADD EDUCATION
           </button>
         </section>
@@ -96,6 +99,7 @@ class Form extends Component {
             ))}
           </div>
           <button type="button" className="skillAddBtn" onClick={addSkill}>
+            <LuPlus color="white" size="20px" pointerEvents="none" />
             ADD SKILL
           </button>
         </section>

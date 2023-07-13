@@ -20,7 +20,19 @@
   width: 100%;
 }
 
+.skillAddBtn {
+  font-weight: 600;
+  color: #f8f9fa;
+  padding: 10px 10px;
+  border: none;
+  background-color: #1d70e0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
 .delSkillBtn {
+  border: none;
   justify-self: end;
   align-self: center;
 }

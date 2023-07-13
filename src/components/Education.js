@@ -19,7 +19,7 @@ class Education extends Component {
 
     return (
       <div className="education">
-        <div className="wrapper">
+        <div className="educationWrapper">
           <div>
             <label htmlFor="schoolNameInput">School Name</label>
             <input
@@ -33,7 +33,7 @@ class Education extends Component {
             />
           </div>
         </div>
-        <div className="wrapper">
+        <div className="educationWrapper">
           <div>
             <label htmlFor="degreeInput">Degree</label>
             <input
@@ -59,7 +59,7 @@ class Education extends Component {
             />
           </div>
         </div>
-        <div className="wrapper">
+        <div className="educationWrapper">
           <div>
             <label htmlFor="schoolStartInput">Start Date</label>
             <input
@@ -86,7 +86,7 @@ class Education extends Component {
         <button
           onClick={rmEducationBtnClicked}
           type="button"
-          className="delEducation"
+          className="delEducationBtn"
           id={educationId}
         >
           DELETE

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import JobCard from "./JobCard";
 import EducationCard from "./EducationCard";
 import SkillCard from "./SkillCard";
+import "../styles/Overview.css";
 
 class Overview extends Component {
   constructor(props) {
@@ -71,8 +72,8 @@ class Overview extends Component {
             <SkillCard key={index} skill={item} />
           ))}
         </div>
-        <button className="editBtn" onClick={edit}>
-          Edit
+        <button type="button" className="editBtn" onClick={edit}>
+          EDIT
         </button>
       </div>
     );

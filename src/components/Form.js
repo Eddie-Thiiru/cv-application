@@ -35,14 +35,14 @@ class Form extends Component {
     return (
       <form onSubmit={onSubmitCV} className="form">
         <section>
-          <h3>Personal Information</h3>
+          <h2>Personal Information</h2>
           <General
             generalData={generalData}
             onInputChange={inputGeneralChange}
           />
         </section>
         <section>
-          <h3>Work History</h3>
+          <h2>Work History</h2>
           <div className="workContainer">
             {workArray.map((item, index) => (
               <Work
@@ -60,7 +60,7 @@ class Form extends Component {
           </button>
         </section>
         <section>
-          <h3>Education</h3>
+          <h2>Education</h2>
           <div className="educationContainer">
             {educationArray.map((item, index) => (
               <Education
@@ -82,7 +82,7 @@ class Form extends Component {
           </button>
         </section>
         <section>
-          <h3>Skills</h3>
+          <h2>Skills</h2>
           <div className="skillContainer">
             {skillsArray.map((item, index) => (
               <Skill
@@ -100,13 +100,14 @@ class Form extends Component {
           </button>
         </section>
         <section>
+          <h2>Professional Summary</h2>
           <Summary
             summaryData={summaryData}
             onInputChange={inputSummaryChange}
           />
         </section>
         <button type="submit" className="submitBtn">
-          Submit
+          NEXT
         </button>
       </form>
     );

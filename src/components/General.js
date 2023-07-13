@@ -22,7 +22,7 @@ class General extends Component {
 
     return (
       <div className="general">
-        <div className="wrapper">
+        <div className="generalWrapper">
           <div>
             <label htmlFor="firstNameInput">First Name</label>
             <input
@@ -46,7 +46,7 @@ class General extends Component {
             />
           </div>
         </div>
-        <div className="wrapper">
+        <div className="generalWrapper">
           <div>
             <label htmlFor="professionInput">Profession</label>
             <input
@@ -59,20 +59,7 @@ class General extends Component {
             />
           </div>
         </div>
-        <div className="wrapper">
-          <div>
-            <label htmlFor="postalInput">Postal Address</label>
-            <input
-              onChange={onInputChange}
-              defaultValue={address}
-              type="number"
-              id="postalAddressInput"
-              name="address"
-              placeholder="e.g. 72186"
-            />
-          </div>
-        </div>
-        <div className="wrapper">
+        <div className="generalWrapper">
           <div>
             <label htmlFor="cityInput">City</label>
             <input
@@ -95,8 +82,21 @@ class General extends Component {
               placeholder="e.g. Kenya"
             />
           </div>
+        </div>
+        <div className="generalWrapper">
           <div>
-            <label htmlFor="postalInput">Postcode</label>
+            <label htmlFor="postalAddressInput">Postal Address</label>
+            <input
+              onChange={onInputChange}
+              defaultValue={address}
+              type="number"
+              id="postalAddressInput"
+              name="address"
+              placeholder="e.g. 72186"
+            />
+          </div>
+          <div>
+            <label htmlFor="postalCodeInput">Postcode</label>
             <input
               onChange={onInputChange}
               defaultValue={postcode}
@@ -107,7 +107,7 @@ class General extends Component {
             />
           </div>
         </div>
-        <div className="wrapper">
+        <div className="generalWrapper">
           <div>
             <label htmlFor="phoneInput">Phone</label>
             <input

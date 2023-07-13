@@ -2,17 +2,12 @@ import React, { Component } from "react";
 import "../styles/Summary.css";
 
 class Summary extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { summaryData, onInputChange } = this.props;
 
     return (
       <div className="summary">
-        <h3>Professional Summary</h3>
-        <div>
+        <div className="summaryWrapper">
           <label htmlFor="summaryInput" />
           <textarea
             onChange={onInputChange}

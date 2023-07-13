@@ -13,7 +13,7 @@ class Skill extends Component {
 
     return (
       <div className="skill">
-        <div className="wrapper">
+        <div className="skillWrapper">
           <div>
             <label htmlFor="skillInput" />
             <input
@@ -26,8 +26,8 @@ class Skill extends Component {
             />
           </div>
         </div>
-        <div className="wrapper">
-          <label htmlFor="level">Skill Level</label>
+        <div className="skillWrapper">
+          <label htmlFor="level">Level</label>
           <select
             onChange={onInputChange}
             defaultValue={level}
@@ -44,7 +44,7 @@ class Skill extends Component {
         <button
           onClick={rmSkillBtnClicked}
           type="button"
-          className="delSkill"
+          className="delSkillBtn"
           id={skillId}
         >
           DELETE

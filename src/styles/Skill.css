@@ -1,5 +1,40 @@
 .skill {
+  padding: 10px 0px;
+  display: grid;
+  grid-template-columns: 360px 2fr 1fr;
+  gap: 10px;
+}
+
+.skillContainer {
+  padding: 15px 0px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.skillWrapper {
+  display: flex;
+}
+
+#skillInput {
+  width: 100%;
+}
+
+.delSkillBtn {
+  justify-self: end;
+  align-self: center;
+}
+
+.skillWrapper > div {
+  width: 100%;
+}
+
+.skillWrapper label {
+  justify-self: center;
+  align-self: center;
+}
+
+.skillWrapper:nth-child(2) {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
 }

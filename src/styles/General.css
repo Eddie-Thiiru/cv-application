@@ -1,5 +1,21 @@
 .general {
+  padding: 10px 0px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.generalWrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.generalWrapper > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.generalWrapper:nth-child(2) > div {
+  grid-column: 1 / 3;
 }

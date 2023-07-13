@@ -14,7 +14,7 @@ class Work extends Component {
 
     return (
       <div className="work">
-        <div className="wrapper">
+        <div className="workWrapper">
           <div>
             <label htmlFor="jobInput">Job Title</label>
             <input
@@ -40,7 +40,7 @@ class Work extends Component {
             />
           </div>
         </div>
-        <div className="wrapper">
+        <div className="workWrapper">
           <div>
             <label htmlFor="workStartInput">Start Date</label>
             <input
@@ -64,7 +64,7 @@ class Work extends Component {
             />
           </div>
         </div>
-        <div className="wrapper">
+        <div className="workWrapper">
           <div>
             <label htmlFor="descriptionInput" />
             <textarea
@@ -80,7 +80,7 @@ class Work extends Component {
         <button
           onClick={rmWorkBtnClicked}
           type="button"
-          className="delWork"
+          className="delJobBtn"
           id={workId}
         >
           DELETE

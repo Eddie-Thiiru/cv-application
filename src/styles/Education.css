@@ -1,5 +1,27 @@
 .education {
+  padding: 10px 0px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.educationContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.educationWrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.educationWrapper > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.delEducationBtn {
+  align-self: self-end;
 }

@@ -1,0 +1,101 @@
+.overview {
+  border: 1px solid black;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cvHeading,
+.cvSummary,
+.cvWorkHistory,
+.cvEducationHistory,
+.cvSkills {
+  padding: 10px 30px;
+}
+
+.cvHeading {
+  background-color: lightblue;
+  padding: 15px 30px;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  align-items: center;
+  gap: 20px;
+}
+
+.cvSummary {
+  padding-top: 20px;
+}
+
+.cvWorkHistory,
+.cvEducationHistory,
+.cvSkills {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cvSkills {
+  padding-bottom: 20px;
+}
+
+.overview h3 {
+  font-size: 1.25rem;
+}
+
+.person h1 {
+  font-size: 3rem;
+}
+
+.person h3 {
+  font-size: 1.5rem;
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.jobCard,
+.educationCard {
+  padding: 10px 0px;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.skillCard {
+  padding: 10px 0px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+}
+
+.skillName {
+  grid-column: 2 / 3;
+}
+
+.skillLevel {
+  justify-self: end;
+}
+
+.jobDates p,
+.educationDates p {
+  padding: 5px 0px;
+}
+
+.jobDetails,
+.educationDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.jobDetails p:nth-child(2),
+.educationDetails p {
+  font-style: italic;
+}
+
+.editBtn {
+  height: 40px;
+  width: 120px;
+  align-self: center;
+}

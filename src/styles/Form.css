@@ -1,5 +1,7 @@
 .form {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 section {
@@ -7,10 +9,25 @@ section {
   padding: 10px;
 }
 
-.workContainer,
-.educationContainer,
-.skillContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.form h3 {
+  padding: 10px 0px;
+}
+
+label {
+  padding: 5px 0px;
+}
+
+input {
+  height: 35px;
+  padding: 5px;
+}
+
+button {
+  padding: 5px 10px;
+}
+
+.submitBtn {
+  height: 40px;
+  width: 120px;
+  align-self: center;
 }

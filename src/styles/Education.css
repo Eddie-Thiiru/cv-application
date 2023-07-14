@@ -22,6 +22,22 @@
   flex-direction: column;
 }
 
+.educationWrapper:nth-child(4) > div {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.educationCheckbox input {
+  width: 20px;
+}
+
+.educationCheckbox label {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.6);
+}
+
 .educationAddBtn {
   border: none;
   font-weight: 600;
@@ -35,7 +51,11 @@
 
 .delEducationBtn {
   border: none;
-  align-self: self-end;
+  justify-self: end;
+}
+
+#schoolEndInput:disabled {
+  background-color: #e6e6e4;
 }
 
 .educationAddBtn:hover {

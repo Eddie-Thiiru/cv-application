@@ -7,11 +7,41 @@ class EducationCard extends Component {
   }
 
   render() {
-    const { school, degree, field, schoolStartDate, schoolEndDate } =
-      this.props.education;
+    const {
+      school,
+      degree,
+      field,
+      schoolStartDate,
+      schoolEndDate,
+      checkboxState,
+    } = this.props.education;
 
-    const start = format(parseISO(schoolStartDate), "MMM yyyy");
-    const end = format(parseISO(schoolEndDate), "MMM yyyy");
+    let start;
+    let end;
+
+    if (schoolStartDate !== "" && schoolEndDate !== "") {
+      start = format(parseISO(schoolStartDate), "MMM yyyy");
+      end = format(parseISO(schoolEndDate), "MMM yyyy");
+    } else if (schoolStartDate !== "" && checkboxState === true) {
+      start = format(parseISO(schoolStartDate), "MMM yyyy");
+      end = "Current";
+    } else if (
+      schoolStartDate !== "" &&
+      schoolEndDate === "" &&
+      checkboxState === false
+    ) {
+      start = format(parseISO(schoolStartDate), "MMM yyyy");
+      end = "";
+    } else if (schoolStartDate === "" && checkboxState === true) {
+      start = "";
+      end = "Current";
+    } else if (schoolStartDate === "" && schoolEndDate !== "") {
+      start = "";
+      end = format(parseISO(schoolEndDate), "MMM yyyy");
+    } else {
+      start = "";
+      end = "";
+    }
 
     return (
       <div className="educationCard">

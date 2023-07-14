@@ -30,6 +30,7 @@ class App extends Component {
           workStartDate: "",
           workEndDate: "",
           workDescription: "",
+          checkboxState: false,
           id: uniqid(),
         },
       ],
@@ -41,6 +42,7 @@ class App extends Component {
           field: "",
           schoolStartDate: "",
           schoolEndDate: "",
+          checkboxState: false,
           id: uniqid(),
         },
       ],
@@ -90,30 +92,58 @@ class App extends Component {
     const inputName = e.target.name;
     const inputIndex = parseInt(e.target.dataset.key);
 
-    this.setState({
-      work: this.state.work.map((item, index) => {
-        if (index === inputIndex) {
-          return { ...item, [inputName]: e.target.value };
-        } else {
-          return item;
-        }
-      }),
-    });
+    if (inputName === "jobCheckbox") {
+      this.setState({
+        work: this.state.work.map((item, index) => {
+          let value = e.target.value === "unchecked" ? true : false;
+
+          if (index === inputIndex) {
+            return { ...item, checkboxState: value };
+          } else {
+            return item;
+          }
+        }),
+      });
+    } else {
+      this.setState({
+        work: this.state.work.map((item, index) => {
+          if (index === inputIndex) {
+            return { ...item, [inputName]: e.target.value };
+          } else {
+            return item;
+          }
+        }),
+      });
+    }
   };
 
   handleEducationChange = (e) => {
     const inputName = e.target.name;
     const inputIndex = parseInt(e.target.dataset.key);
 
-    this.setState({
-      education: this.state.education.map((item, index) => {
-        if (index === inputIndex) {
-          return { ...item, [inputName]: e.target.value };
-        } else {
-          return item;
-        }
-      }),
-    });
+    if (inputName === "schoolCheckbox") {
+      this.setState({
+        education: this.state.education.map((item, index) => {
+          let value = e.target.value === "unchecked" ? true : false;
+
+          if (index === inputIndex) {
+            return { ...item, checkboxState: value };
+          } else {
+            return item;
+          }
+        }),
+      });
+    } else {
+      this.setState({
+        education: this.state.education.map((item, index) => {
+          if (index === inputIndex) {
+            return { ...item, [inputName]: e.target.value };
+          } else {
+            return item;
+          }
+        }),
+      });
+    }
   };
 
   handleSkillChange = (e) => {
@@ -149,6 +179,7 @@ class App extends Component {
           workStartDate: "",
           workEndDate: "",
           workDescription: "",
+          checkboxState: false,
           id: uniqid(),
         },
       ],
@@ -165,6 +196,7 @@ class App extends Component {
           field: "",
           schoolStartDate: "",
           schoolEndDate: "",
+          checkboxState: false,
           id: uniqid(),
         },
       ],

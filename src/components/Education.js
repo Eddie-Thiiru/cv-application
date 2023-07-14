@@ -15,8 +15,16 @@ class Education extends Component {
       rmEducationBtnClicked,
       onInputChange,
     } = this.props;
-    const { school, degree, field, schoolStartDate, schoolEndDate } =
-      educationData;
+    const {
+      school,
+      degree,
+      field,
+      schoolStartDate,
+      schoolEndDate,
+      checkboxState,
+    } = educationData;
+    const checkboxValue = checkboxState === true ? "checked" : "unchecked";
+    const endDataValue = checkboxState === true ? "" : schoolEndDate;
 
     return (
       <div className="education">
@@ -76,7 +84,8 @@ class Education extends Component {
             <label htmlFor="schoolEndInput">End Date</label>
             <input
               onChange={onInputChange}
-              defaultValue={schoolEndDate}
+              value={endDataValue}
+              disabled={checkboxState}
               type="date"
               id="schoolEndInput"
               name="schoolEndDate"
@@ -84,14 +93,28 @@ class Education extends Component {
             />
           </div>
         </div>
-        <button
-          onClick={rmEducationBtnClicked}
-          type="button"
-          className="delEducationBtn"
-          id={educationId}
-        >
-          <FaTrashAlt size="20px" pointerEvents="none" />
-        </button>
+        <div className="educationWrapper">
+          <div className="educationCheckbox">
+            <input
+              onChange={onInputChange}
+              defaultValue={checkboxValue}
+              checked={checkboxState}
+              type="checkbox"
+              id="schoolCheckbox"
+              name="schoolCheckbox"
+              data-key={num}
+            />
+            <label htmlFor="schoolCheckbox">Currently attend here</label>
+          </div>
+          <button
+            onClick={rmEducationBtnClicked}
+            type="button"
+            className="delEducationBtn"
+            id={educationId}
+          >
+            <FaTrashAlt size="20px" pointerEvents="none" />
+          </button>
+        </div>
       </div>
     );
   }

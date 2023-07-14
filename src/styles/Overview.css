@@ -44,6 +44,13 @@
   font-size: 2.5rem;
 }
 
+.cvSummary h2,
+.cvWorkHistory h2,
+.cvEducationHistory h2,
+.cvSkills h2 {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+}
+
 .contacts {
   display: flex;
   flex-direction: column;
@@ -92,6 +99,10 @@
 .jobDetails p:nth-child(2),
 .educationDetails p {
   font-style: italic;
+}
+
+.skillName p {
+  font-weight: 600;
 }
 
 .editBtn {

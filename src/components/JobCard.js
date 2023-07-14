@@ -7,11 +7,41 @@ class JobCard extends Component {
   }
 
   render() {
-    const { jobTitle, employer, workStartDate, workEndDate, workDescription } =
-      this.props.job;
+    const {
+      jobTitle,
+      employer,
+      workStartDate,
+      workEndDate,
+      workDescription,
+      checkboxState,
+    } = this.props.job;
 
-    const start = format(parseISO(workStartDate), "MMM yyyy");
-    const end = format(parseISO(workEndDate), "MMM yyyy");
+    let start;
+    let end;
+
+    if (workStartDate !== "" && workEndDate !== "") {
+      start = format(parseISO(workStartDate), "MMM yyyy");
+      end = format(parseISO(workEndDate), "MMM yyyy");
+    } else if (workStartDate !== "" && checkboxState === true) {
+      start = format(parseISO(workStartDate), "MMM yyyy");
+      end = "Current";
+    } else if (
+      workStartDate !== "" &&
+      workEndDate === "" &&
+      checkboxState === false
+    ) {
+      start = format(parseISO(workStartDate), "MMM yyyy");
+      end = "";
+    } else if (workStartDate === "" && checkboxState === true) {
+      start = "";
+      end = "Current";
+    } else if (workStartDate === "" && workEndDate !== "") {
+      start = "";
+      end = format(parseISO(workEndDate), "MMM yyyy");
+    } else {
+      start = "";
+      end = "";
+    }
 
     return (
       <div className="jobCard">

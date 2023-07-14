@@ -1,7 +1,6 @@
 .overview {
-  /* border: 1px solid black; */
   padding-bottom: 20px;
-  box-shadow: 1px 1px 2px #082141, inset 1px 1px 2px #082141;
+  box-shadow: 1px 1px 3px black, inset 1px 1px 3px black;
   display: flex;
   flex-direction: column;
 }

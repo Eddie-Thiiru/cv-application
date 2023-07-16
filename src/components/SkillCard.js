@@ -1,24 +1,18 @@
-import React, { Component } from "react";
+import React from "react";
 
-class SkillCard extends Component {
-  constructor(props) {
-    super(props);
-  }
+const SkillCard = (props) => {
+  const { skill, level } = props.skill;
 
-  render() {
-    const { skill, level } = this.props.skill;
-
-    return (
-      <div className="skillCard">
-        <div className="skillName">
-          <p>{skill}</p>
-        </div>
-        <div className="skillLevel">
-          <p>{level}</p>
-        </div>
+  return (
+    <div className="skillCard">
+      <div className="skillName">
+        <p>{skill}</p>
       </div>
-    );
-  }
-}
+      <div className="skillLevel">
+        <p>{level}</p>
+      </div>
+    </div>
+  );
+};
 
 export default SkillCard;

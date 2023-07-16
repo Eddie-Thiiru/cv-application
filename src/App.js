@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Form from "./components/Form";
@@ -6,95 +6,62 @@ import Overview from "./components/Overview";
 import uniqid from "uniqid";
 import "./styles/App.css";
 
-class App extends Component {
-  constructor() {
-    super();
+const App = () => {
+  const [status, setStatus] = useState("active");
+  const [general, setGeneral] = useState({
+    firstName: "",
+    surname: "",
+    profession: "",
+    city: "",
+    country: "",
+    address: "",
+    postcode: "",
+    phone: "",
+    email: "",
+  });
+  const [work, setWork] = useState([
+    {
+      jobTitle: "",
+      employer: "",
+      workStartDate: "",
+      workEndDate: "",
+      workDescription: "",
+      checkboxState: false,
+      id: uniqid(),
+    },
+  ]);
+  const [education, setEducation] = useState([
+    {
+      school: "",
+      degree: "",
+      field: "",
+      schoolStartDate: "",
+      schoolEndDate: "",
+      checkboxState: false,
+      id: uniqid(),
+    },
+  ]);
+  const [skills, setSkills] = useState([
+    { skill: "", level: "Novice", id: uniqid() },
+  ]);
+  const [summary, setSummary] = useState({ text: "" });
 
-    this.state = {
-      form: "active",
-      general: {
-        firstName: "",
-        surname: "",
-        profession: "",
-        city: "",
-        country: "",
-        address: "",
-        postcode: "",
-        phone: "",
-        email: "",
-      },
-      work: [
-        {
-          jobTitle: "",
-          employer: "",
-          workStartDate: "",
-          workEndDate: "",
-          workDescription: "",
-          checkboxState: false,
-          id: uniqid(),
-        },
-      ],
-
-      education: [
-        {
-          school: "",
-          degree: "",
-          field: "",
-          schoolStartDate: "",
-          schoolEndDate: "",
-          checkboxState: false,
-          id: uniqid(),
-        },
-      ],
-      skills: [{ skill: "", level: "", id: uniqid() }],
-      summary: { text: "" },
-    };
-
-    this.handleGeneralChange = this.handleGeneralChange.bind(this);
-
-    this.handleWorkChange = this.handleWorkChange.bind(this);
-
-    this.handleEducationChange = this.handleEducationChange.bind(this);
-
-    this.handleSkillChange = this.handleSkillChange.bind(this);
-
-    this.handleSummaryChange = this.handleSummaryChange.bind(this);
-
-    this.addWork = this.addWork.bind(this);
-
-    this.addEducation = this.addEducation.bind(this);
-
-    this.addSkill = this.addSkill.bind(this);
-
-    this.removeWork = this.removeWork.bind(this);
-
-    this.removeEducation = this.removeEducation.bind(this);
-
-    this.removeSkill = this.removeSkill.bind(this);
-
-    this.onSubmitForm = this.onSubmitForm.bind(this);
-
-    this.editCV = this.editCV.bind(this);
-  }
-
-  handleGeneralChange = (e) => {
+  const handleGeneralChange = (e) => {
     const inputName = e.target.name;
 
-    this.setState({
-      general: {
-        ...this.state.general,
-        [inputName]: e.target.value,
-      },
+    setGeneral({
+      ...general,
+      [inputName]: e.target.value,
     });
   };
 
-  handleWorkChange = (e) => {
+  const handleWorkChange = (e) => {
     const inputName = e.target.name;
     const inputIndex = parseInt(e.target.dataset.key);
 
     if (inputName === "jobCheckbox") {
-      this.setState({
-        work: this.state.work.map((item, index) => {
+      setWork(
+        work.map((item, index) => {
           let value = e.target.value === "unchecked" ? true : false;
 
           if (index === inputIndex) {
@@ -102,28 +69,28 @@ class App extends Component {
           } else {
             return item;
           }
-        }),
-      });
+        })
+      );
     } else {
-      this.setState({
-        work: this.state.work.map((item, index) => {
+      setWork(
+        work.map((item, index) => {
           if (index === inputIndex) {
             return { ...item, [inputName]: e.target.value };
           } else {
             return item;
           }
-        }),
-      });
+        })
+      );
     }
   };
 
-  handleEducationChange = (e) => {
+  const handleEducationChange = (e) => {
     const inputName = e.target.name;
     const inputIndex = parseInt(e.target.dataset.key);
 
     if (inputName === "schoolCheckbox") {
-      this.setState({
-        education: this.state.education.map((item, index) => {
+      setEducation(
+        education.map((item, index) => {
           let value = e.target.value === "unchecked" ? true : false;
 
           if (index === inputIndex) {
@@ -131,161 +98,137 @@ class App extends Component {
           } else {
             return item;
           }
-        }),
-      });
+        })
+      );
     } else {
-      this.setState({
-        education: this.state.education.map((item, index) => {
+      setEducation(
+        education.map((item, index) => {
           if (index === inputIndex) {
             return { ...item, [inputName]: e.target.value };
           } else {
             return item;
           }
-        }),
-      });
+        })
+      );
     }
   };
 
-  handleSkillChange = (e) => {
+  const handleSkillChange = (e) => {
     const inputName = e.target.name;
     const inputIndex = parseInt(e.target.dataset.key);
 
-    this.setState({
-      skills: this.state.skills.map((item, index) => {
+    setSkills(
+      skills.map((item, index) => {
         if (index === inputIndex) {
           return { ...item, [inputName]: e.target.value };
         } else {
           return item;
         }
-      }),
+      })
+    );
+  };
+
+  const handleSummaryChange = (e) => {
+    setSummary({
+      text: e.target.value,
     });
   };
 
-  handleSummaryChange = (e) => {
-    this.setState({
-      summary: {
-        text: e.target.value,
+  const addWork = () => {
+    setWork([
+      ...work,
+      {
+        jobTitle: "",
+        employer: "",
+        workStartDate: "",
+        workEndDate: "",
+        workDescription: "",
+        checkboxState: false,
+        id: uniqid(),
       },
-    });
+    ]);
   };
 
-  addWork = () => {
-    this.setState({
-      work: [
-        ...this.state.work,
-        {
-          jobTitle: "",
-          employer: "",
-          workStartDate: "",
-          workEndDate: "",
-          workDescription: "",
-          checkboxState: false,
-          id: uniqid(),
-        },
-      ],
-    });
+  const addEducation = () => {
+    setEducation([
+      ...education,
+      {
+        school: "",
+        degree: "",
+        field: "",
+        schoolStartDate: "",
+        schoolEndDate: "",
+        checkboxState: false,
+        id: uniqid(),
+      },
+    ]);
   };
 
-  addEducation = () => {
-    this.setState({
-      education: [
-        ...this.state.education,
-        {
-          school: "",
-          degree: "",
-          field: "",
-          schoolStartDate: "",
-          schoolEndDate: "",
-          checkboxState: false,
-          id: uniqid(),
-        },
-      ],
-    });
+  const addSkill = () => {
+    setSkills([...skills, { skill: "", level: "Novice", id: uniqid() }]);
   };
 
-  addSkill = () => {
-    this.setState({
-      skills: [...this.state.skills, { skill: "", level: "", id: uniqid() }],
-    });
+  const removeWork = (e) => {
+    setWork(work.filter((item) => item.id !== e.target.id));
   };
 
-  removeWork = (e) => {
-    this.setState({
-      work: this.state.work.filter((item) => item.id !== e.target.id),
-    });
+  const removeEducation = (e) => {
+    setEducation(education.filter((item) => item.id !== e.target.id));
   };
 
-  removeEducation = (e) => {
-    this.setState({
-      education: this.state.education.filter((item) => item.id !== e.target.id),
-    });
+  const removeSkill = (e) => {
+    setSkills(skills.filter((item) => item.id !== e.target.id));
   };
 
-  removeSkill = (e) => {
-    this.setState({
-      skills: this.state.skills.filter((item) => item.id !== e.target.id),
-    });
-  };
-
-  onSubmitForm = (e) => {
+  const onSubmitForm = (e) => {
     e.preventDefault();
 
-    this.setState({
-      form: "submitted",
-    });
+    setStatus("submitted");
   };
 
-  editCV = (e) => {
-    this.setState({
-      data: this.state.data,
-      form: "active",
-    });
+  const editCV = (e) => {
+    setStatus("active");
   };
 
-  render() {
-    const { form, general, work, education, skills, summary, data } =
-      this.state;
-
-    let content =
-      form === "active" ? (
-        <Form
-          generalData={general}
-          workArray={work}
-          educationArray={education}
-          skillsArray={skills}
-          summaryData={summary}
-          inputGeneralChange={this.handleGeneralChange}
-          inputWorkChange={this.handleWorkChange}
-          inputEducationChange={this.handleEducationChange}
-          inputSkillChange={this.handleSkillChange}
-          inputSummaryChange={this.handleSummaryChange}
-          addWork={this.addWork}
-          addEducation={this.addEducation}
-          addSkill={this.addSkill}
-          removeWork={this.removeWork}
-          removeEducation={this.removeEducation}
-          removeSkill={this.removeSkill}
-          onSubmitCV={this.onSubmitForm}
-        />
-      ) : (
-        <Overview
-          generalData={general}
-          workArray={work}
-          educationArray={education}
-          skillsArray={skills}
-          summaryData={summary}
-          edit={this.editCV}
-        />
-      );
-
-    return (
-      <div className="app">
-        <Header />
-        <div className="main">{content}</div>
-        <Footer />
-      </div>
+  let content =
+    status === "active" ? (
+      <Form
+        generalData={general}
+        workArray={work}
+        educationArray={education}
+        skillsArray={skills}
+        summaryData={summary}
+        inputGeneralChange={handleGeneralChange}
+        inputWorkChange={handleWorkChange}
+        inputEducationChange={handleEducationChange}
+        inputSkillChange={handleSkillChange}
+        inputSummaryChange={handleSummaryChange}
+        addWork={addWork}
+        addEducation={addEducation}
+        addSkill={addSkill}
+        removeWork={removeWork}
+        removeEducation={removeEducation}
+        removeSkill={removeSkill}
+        onSubmitCV={onSubmitForm}
+      />
+    ) : (
+      <Overview
+        generalData={general}
+        workArray={work}
+        educationArray={education}
+        skillsArray={skills}
+        summaryData={summary}
+        edit={editCV}
+      />
     );
-  }
-}
+
+  return (
+    <div className="app">
+      <Header />
+      <div className="main">{content}</div>
+      <Footer />
+    </div>
+  );
+};
 
 export default App;

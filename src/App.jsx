@@ -3,7 +3,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Form from "./components/Form";
 import Overview from "./components/Overview";
-import uniqid from "uniqid";
+import { v4 as uuidv4 } from "uuid";
 import "./styles/App.css";
 
 const App = () => {
@@ -27,7 +27,7 @@ const App = () => {
       workEndDate: "",
       workDescription: "",
       checkboxState: false,
-      id: uniqid(),
+      id: uuidv4(),
     },
   ]);
   const [education, setEducation] = useState([
@@ -38,11 +38,11 @@ const App = () => {
       schoolStartDate: "",
       schoolEndDate: "",
       checkboxState: false,
-      id: uniqid(),
+      id: uuidv4(),
     },
   ]);
   const [skills, setSkills] = useState([
-    { skill: "", level: "Novice", id: uniqid() },
+    { skill: "", level: "Novice", id: uuidv4() },
   ]);
   const [summary, setSummary] = useState({ text: "" });
 
@@ -144,7 +144,7 @@ const App = () => {
         workEndDate: "",
         workDescription: "",
         checkboxState: false,
-        id: uniqid(),
+        id: uuidv4(),
       },
     ]);
   };
@@ -159,13 +159,13 @@ const App = () => {
         schoolStartDate: "",
         schoolEndDate: "",
         checkboxState: false,
-        id: uniqid(),
+        id: uuidv4(),
       },
     ]);
   };
 
   const addSkill = () => {
-    setSkills([...skills, { skill: "", level: "Novice", id: uniqid() }]);
+    setSkills([...skills, { skill: "", level: "Novice", id: uuidv4() }]);
   };
 
   const removeWork = (e) => {

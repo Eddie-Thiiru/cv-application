@@ -67,6 +67,8 @@ const Overview = (props) => {
         {skillsArray.map((item, index) => {
           if (item.skill !== "") {
             return <SkillCard key={index} skill={item} />;
+          } else {
+            return null;
           }
         })}
       </div>

@@ -1,9 +1,10 @@
 import React from "react";
+import { MdEdit } from "react-icons/md";
 import JobCard from "./JobCard";
 import EducationCard from "./EducationCard";
 import SkillCard from "./SkillCard";
+
 import "../styles/Overview.css";
-import { MdEdit } from "react-icons/md";
 
 const Overview = (props) => {
   const {
@@ -26,6 +27,34 @@ const Overview = (props) => {
     email,
   } = generalData;
 
+  const isWorkEmpty = (item) => {
+    if (
+      item.jobTitle === "" &&
+      item.employer === "" &&
+      item.workStartDate === "" &&
+      item.workEndDate === "" &&
+      item.workDescription === ""
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const isEducationEmpty = (item) => {
+    if (
+      item.school === "" &&
+      item.degree === "" &&
+      item.field === "" &&
+      item.schoolStartDate === "" &&
+      item.schoolEndDate === ""
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   return (
     <div className="overview">
       <div className="cvHeading">
@@ -37,7 +66,8 @@ const Overview = (props) => {
         </div>
         <div className="contacts">
           <p>
-            <b>Address</b> P.O. Box {address}-{postcode}, {city} {country}
+            <b>Address</b> {address !== "" && `P.O. Box ${address}-`}
+            {postcode !== "" && `${postcode}, `} {city} {country}
           </p>
           <p>
             <b>Phone</b> {phone}
@@ -52,15 +82,26 @@ const Overview = (props) => {
       </div>
       <div className="cvWorkHistory">
         <h2>Work History</h2>
-        {workArray.map((item, index) => (
-          <JobCard key={index} job={item} />
-        ))}
+        {workArray.map((item, index) => {
+          const workEmpty = isWorkEmpty(item);
+          if (workEmpty === false) {
+            return <JobCard key={index} job={item} />;
+          } else {
+            return null;
+          }
+        })}
       </div>
       <div className="cvEducationHistory">
         <h2>Education</h2>
-        {educationArray.map((item, index) => (
-          <EducationCard key={index} education={item} />
-        ))}
+        {educationArray.map((item, index) => {
+          const educationEmpty = isEducationEmpty(item);
+
+          if (educationEmpty === false) {
+            return <EducationCard key={index} education={item} />;
+          } else {
+            return null;
+          }
+        })}
       </div>
       <div className="cvSkills">
         <h2>Skills</h2>

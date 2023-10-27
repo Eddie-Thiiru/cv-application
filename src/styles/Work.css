@@ -42,26 +42,32 @@
   color: rgba(0, 0, 0, 0.6);
 }
 
-.workAddBtn {
-  font-weight: 600;
-  color: #f8f9fa;
-  border: none;
-  padding: 10px 10px;
-  background-color: #1d70e0;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
 .delJobBtn {
   border: none;
+  background-color: white;
+  padding: 5px;
   justify-self: end;
+}
+
+.delJobBtn svg {
+  color: black;
+}
+
+.delJobBtn:hover {
+  background-color: #c1c1bc;
 }
 
 #workEndInput:disabled {
   background-color: #e6e6e4;
 }
 
-.workAddBtn:hover {
-  background-color: #1759b3;
+@media (max-width: 450px) {
+  .workWrapper:nth-child(1) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .workWrapper:nth-child(4) {
+    grid-template-columns: 2fr 1fr;
+  }
 }

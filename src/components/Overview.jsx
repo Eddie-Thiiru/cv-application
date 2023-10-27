@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
-import { MdEdit } from "react-icons/md";
 import { useReactToPrint } from "react-to-print";
+import { MdOutlineModeEditOutline } from "react-icons/md";
+import { HiDownload } from "react-icons/hi";
 import JobCard from "./JobCard";
 import EducationCard from "./EducationCard";
 import SkillCard from "./SkillCard";
@@ -124,11 +125,12 @@ const Overview = (props) => {
       </div>
       <div className="overviewBtnContainer">
         <button type="button" className="editBtn" onClick={edit}>
-          <MdEdit size="20px" pointerEvents="none" />
+          <MdOutlineModeEditOutline size="20px" />
           EDIT
         </button>
         <button type="button" className="downloadBtn" onClick={handlePrint}>
-          Download
+          <HiDownload size="20px" />
+          DOWNLOAD
         </button>
       </div>
     </div>

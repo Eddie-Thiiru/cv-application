@@ -1,6 +1,7 @@
 .overviewContainer {
   height: 100%;
   width: 100%;
+  padding: 20px;
   display: flex;
   flex-direction: column;
 }
@@ -86,7 +87,7 @@
   margin-top: auto;
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 25px;
 }
 
 .editBtn,
@@ -94,20 +95,21 @@
   height: 50px;
   width: 150px;
   border: none;
-  border-radius: 5px;
   color: #f8f9fa;
-  font-size: 1rem;
+  font-size: 0.875rem;
   font-weight: 600;
   background-color: #d8140e;
+  padding: 10px;
   align-self: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 5px;
+  transition: background-color 0.2s ease-in-out;
 }
 
 .downloadBtn {
-  background-color: green;
+  background-color: #00a400;
 }
 
 .overview h1 {
@@ -143,4 +145,26 @@
 
 .editBtn:hover {
   background-color: #a8100b;
+}
+
+.downloadBtn:hover {
+  background-color: #008b00;
+}
+
+@media (max-width: 450px) {
+  .overviewBtnContainer {
+    flex-direction: column;
+  }
+
+  .overview h1 {
+    font-size: 2rem;
+  }
+
+  .overview h2 {
+    font-size: 1.25rem;
+  }
+
+  .overview h3 {
+    font-size: 1.125rem;
+  }
 }

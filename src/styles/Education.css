@@ -28,6 +28,13 @@
   gap: 10px;
 }
 
+.delEducationBtn {
+  border: none;
+  background-color: white;
+  padding: 5px;
+  justify-self: end;
+}
+
 .educationCheckbox input {
   width: 20px;
 }
@@ -38,26 +45,25 @@
   color: rgba(0, 0, 0, 0.6);
 }
 
-.educationAddBtn {
-  border: none;
-  font-weight: 600;
-  color: #f8f9fa;
-  padding: 10px 10px;
-  background-color: #1d70e0;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.delEducationBtn {
-  border: none;
-  justify-self: end;
-}
-
 #schoolEndInput:disabled {
   background-color: #e6e6e4;
 }
 
-.educationAddBtn:hover {
-  background-color: #1759b3;
+.delEducationBtn svg {
+  color: black;
+}
+
+.delEducationBtn:hover {
+  background-color: #c1c1bc;
+}
+
+@media (max-width: 450px) {
+  .educationWrapper:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .educationWrapper:nth-child(4) {
+    grid-template-columns: 2fr 1fr;
+  }
 }

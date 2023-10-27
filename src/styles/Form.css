@@ -1,5 +1,6 @@
 .form {
   width: 100%;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 50px;
@@ -41,14 +42,25 @@ select {
   border: 1px solid #98bef2;
 }
 
-.submitBtn {
-  height: 50px;
-  width: 150px;
+form button {
+  border: none;
+  font-weight: 600;
+  color: #f8f9fa;
+  padding: 10px 10px;
+  background-color: #1d70e0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+form .submitBtn {
   border: none;
   font-size: 1rem;
   font-weight: 600;
   color: #f8f9fa;
-  background-color: #d8140e;
+  padding: 15px 50px;
+  background-color: #00a400;
   align-self: center;
 }
 
@@ -59,6 +71,10 @@ select:focus {
   border: 2px solid #1b65cf;
 }
 
-.submitBtn:hover {
-  background-color: #a8100b;
+form button:hover {
+  background-color: #1759b3;
+}
+
+form .submitBtn:hover {
+  background-color: #008b00;
 }

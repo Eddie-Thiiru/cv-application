@@ -35,15 +35,15 @@ const Skill = (props) => {
           <option defaultValue="advanced">Advanced</option>
           <option defaultValue="expert">Expert</option>
         </select>
+        <button
+          onClick={rmSkillBtnClicked}
+          type="button"
+          className="delSkillBtn"
+          id={skillId}
+        >
+          <FaTrashAlt size="20px" pointerEvents="none" />
+        </button>
       </div>
-      <button
-        onClick={rmSkillBtnClicked}
-        type="button"
-        className="delSkillBtn"
-        id={skillId}
-      >
-        <FaTrashAlt size="20px" pointerEvents="none" />
-      </button>
     </div>
   );
 };

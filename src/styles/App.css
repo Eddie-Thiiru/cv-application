@@ -38,6 +38,7 @@ body {
 .main {
   grid-column: 2 / 3;
   padding: 40px 0px;
+  display: flex;
 }
 
 .footer {

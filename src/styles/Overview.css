@@ -1,3 +1,10 @@
+.overviewContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 .overview {
   padding-bottom: 20px;
   box-shadow: 1px 1px 3px black, inset 1px 1px 3px black;
@@ -39,17 +46,6 @@
   padding-bottom: 20px;
 }
 
-.overview h1 {
-  font-size: 2.5rem;
-}
-
-.cvSummary h2,
-.cvWorkHistory h2,
-.cvEducationHistory h2,
-.cvSkills h2 {
-  border-bottom: 2px solid rgba(0, 0, 0, 0.4);
-}
-
 .contacts {
   display: flex;
   flex-direction: column;
@@ -77,6 +73,54 @@
   justify-self: end;
 }
 
+.jobDetails,
+.educationDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  white-space: pre-wrap;
+}
+
+.overviewBtnContainer {
+  padding: 20px;
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.editBtn,
+.downloadBtn {
+  height: 50px;
+  width: 150px;
+  border: none;
+  border-radius: 5px;
+  color: #f8f9fa;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #d8140e;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.downloadBtn {
+  background-color: green;
+}
+
+.overview h1 {
+  font-size: 2.5rem;
+}
+
+.cvSummary h2,
+.cvWorkHistory h2,
+.cvEducationHistory h2,
+.cvSkills h2 {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+}
+
 .cvSummary p,
 .jobDetails p,
 .educationDetails p {
@@ -88,14 +132,6 @@
   padding: 5px 0px;
 }
 
-.jobDetails,
-.educationDetails {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  white-space: pre-wrap;
-}
-
 .jobDetails p:nth-child(2),
 .educationDetails p {
   font-style: italic;
@@ -103,21 +139,6 @@
 
 .skillName p {
   font-weight: 600;
-}
-
-.editBtn {
-  height: 50px;
-  width: 150px;
-  border: none;
-  color: #f8f9fa;
-  font-size: 1rem;
-  font-weight: 600;
-  background-color: #d8140e;
-  align-self: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
 }
 
 .editBtn:hover {

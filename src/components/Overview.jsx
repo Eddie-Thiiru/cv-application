@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 import { MdEdit } from "react-icons/md";
+import { useReactToPrint } from "react-to-print";
 import JobCard from "./JobCard";
 import EducationCard from "./EducationCard";
 import SkillCard from "./SkillCard";
@@ -7,6 +8,8 @@ import SkillCard from "./SkillCard";
 import "../styles/Overview.css";
 
 const Overview = (props) => {
+  const componentRef = useRef();
+
   const {
     generalData,
     workArray,
@@ -55,68 +58,79 @@ const Overview = (props) => {
     }
   };
 
-  return (
-    <div className="overview">
-      <div className="cvHeading">
-        <div className="person">
-          <h1>
-            {firstName} {surname}
-          </h1>
-          <h2>{profession}</h2>
-        </div>
-        <div className="contacts">
-          <p>
-            <b>Address</b> {address !== "" && `P.O. Box ${address}-`}
-            {postcode !== "" && `${postcode}, `} {city} {country}
-          </p>
-          <p>
-            <b>Phone</b> {phone}
-          </p>
-          <p>
-            <b>E-mail</b> {email}
-          </p>
-        </div>
-      </div>
-      <div className="cvSummary">
-        <p>{summaryData.text}</p>
-      </div>
-      <div className="cvWorkHistory">
-        <h2>Work History</h2>
-        {workArray.map((item, index) => {
-          const workEmpty = isWorkEmpty(item);
-          if (workEmpty === false) {
-            return <JobCard key={index} job={item} />;
-          } else {
-            return null;
-          }
-        })}
-      </div>
-      <div className="cvEducationHistory">
-        <h2>Education</h2>
-        {educationArray.map((item, index) => {
-          const educationEmpty = isEducationEmpty(item);
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
 
-          if (educationEmpty === false) {
-            return <EducationCard key={index} education={item} />;
-          } else {
-            return null;
-          }
-        })}
+  return (
+    <div className="overviewContainer">
+      <div className="overview" ref={componentRef}>
+        <div className="cvHeading">
+          <div className="person">
+            <h1>
+              {firstName} {surname}
+            </h1>
+            <h2>{profession}</h2>
+          </div>
+          <div className="contacts">
+            <p>
+              <b>Address</b> {address !== "" && `P.O. Box ${address}-`}
+              {postcode !== "" && `${postcode}, `} {city} {country}
+            </p>
+            <p>
+              <b>Phone</b> {phone}
+            </p>
+            <p>
+              <b>E-mail</b> {email}
+            </p>
+          </div>
+        </div>
+        <div className="cvSummary">
+          <p>{summaryData.text}</p>
+        </div>
+        <div className="cvWorkHistory">
+          <h2>Work History</h2>
+          {workArray.map((item, index) => {
+            const workEmpty = isWorkEmpty(item);
+            if (workEmpty === false) {
+              return <JobCard key={index} job={item} />;
+            } else {
+              return null;
+            }
+          })}
+        </div>
+        <div className="cvEducationHistory">
+          <h2>Education</h2>
+          {educationArray.map((item, index) => {
+            const educationEmpty = isEducationEmpty(item);
+
+            if (educationEmpty === false) {
+              return <EducationCard key={index} education={item} />;
+            } else {
+              return null;
+            }
+          })}
+        </div>
+        <div className="cvSkills">
+          <h2>Skills</h2>
+          {skillsArray.map((item, index) => {
+            if (item.skill !== "") {
+              return <SkillCard key={index} skill={item} />;
+            } else {
+              return null;
+            }
+          })}
+        </div>
       </div>
-      <div className="cvSkills">
-        <h2>Skills</h2>
-        {skillsArray.map((item, index) => {
-          if (item.skill !== "") {
-            return <SkillCard key={index} skill={item} />;
-          } else {
-            return null;
-          }
-        })}
+      <div className="overviewBtnContainer">
+        <button type="button" className="editBtn" onClick={edit}>
+          <MdEdit size="20px" pointerEvents="none" />
+          EDIT
+        </button>
+        <button type="button" className="downloadBtn" onClick={handlePrint}>
+          Download
+        </button>
       </div>
-      <button type="button" className="editBtn" onClick={edit}>
-        <MdEdit size="20px" pointerEvents="none" />
-        EDIT
-      </button>
     </div>
   );
 };

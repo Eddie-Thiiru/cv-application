@@ -4,10 +4,10 @@ From The Odin Project's curriculum.A React app which allows the user to create t
 
 [Live Demo](https://eddie-thiiru-cvbuilder.netlify.app/) :point_left:
 
-#Features
+# Features
 
 - Users can print or download their CV as a pdf
 
-#Built With
+# Built With
 
 - [Vite + React](https://vitejs.dev/)
